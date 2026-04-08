@@ -60,17 +60,17 @@ ISW_4K4_G7_1Q_2026
 
 | **Ítem de Configuración**    | **Regla de Nombrado**                         | **Ubicación**                                                            |
 | ---------------------------- | --------------------------------------------- | ------------------------------------------------------------------------ |
-| **Ejercicios**               | `ejercicio-<<tema>>-<<autor>>.<<ext>>`        | `material_de_alumnos/ejercicios`                                         |
-| **Toma de Notas**            | `toma-notas-<<ddmm>>-<<autor>>.<<ext>>`       | `material_de_alumnos/toma_de_notas`                                      |
-| **Resumen**                  | `resumen-<<numero-unidad>>-<<autor>>.<<ext>>` | `material_de_alumnos/resumenes`                                          |
-| **Bibliografía**             | `<<nombre-archivo>>.pdf`                      | `material_de_catedra/u_<<numero_unidad>>_<<nombre_unidad>>/bibliografia` |
-| **Diapositiva de Clase**     | `<<nombre-archivo>>.pdf`                      | `material_de_catedra/u_<<numero_unidad>>_<<nombre_unidad>>/filminas`     |
-| **Consigna de TPIG**         | `consigna-tpig-<<numero>>.pdf`                | `trabajos_investigacion/trabajo_investigacion_<<numero>>`                                                 |
-| **Presentación TPIG**        | `presentacion-tpig-<<numero>>.<<ext>>`        | `trabajos_investigacion/trabajo_investigacion_<<numero>>`                                                 |
-| **Consigna de TP Evaluable** | `consigna-tp-<<numero>>.pdf`                  | `trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`                       |
-| **Entrega de TP Evaluable**  | `entrega-tp-<<numero>>.<<ext>>`               | `trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`                       |
-| **Cronograma**               | `cronograma-isw.xlsx`                         | `planificacion_catedra`                                                  |
-| **Programa**                 | `programa-isw.pdf`                            | `planificacion_catedra`                                                  |
+| **Ejercicios**               | `ejercicio-<<tema>>-<<autor>>.<<ext>>`        | [`material_de_alumnos/ejercicios`](material_de_alumnos/ejercicios)                                         |
+| **Toma de Notas**            | `toma-notas-<<ddmm>>-<<autor>>.<<ext>>`       | [`material_de_alumnos/toma_de_notas`](material_de_alumnos/toma_de_notas)                                      |
+| **Resumen**                  | `resumen-<<numero-unidad>>-<<autor>>.<<ext>>` | [`material_de_alumnos/resumenes`](material_de_alumnos/resumenes)                                          |
+| **Bibliografía**             | `<<nombre-archivo>>.pdf`                      | [`material_de_catedra/u_<<numero_unidad>>_<<nombre_unidad>>/bibliografia`](material_de_catedra) |
+| **Diapositiva de Clase**     | `<<nombre-archivo>>.pdf`                      | [`material_de_catedra/u_<<numero_unidad>>_<<nombre_unidad>>/filminas`](material_de_catedra)     |
+| **Consigna de TPIG**         | `consigna-tpig-<<numero>>.pdf`                | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
+| **Presentación TPIG**        | `presentacion-tpig-<<numero>>.<<ext>>`        | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
+| **Consigna de TP Evaluable** | `consigna-tp-<<numero>>.pdf`                  | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
+| **Entrega de TP Evaluable**  | `entrega-tp-<<numero>>.<<ext>>`               | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
+| **Cronograma**               | `cronograma-isw.xlsx`                         | [`planificacion_catedra`](planificacion_catedra)                                                  |
+| **Programa**                 | `programa-isw.pdf`                            | [`planificacion_catedra`](planificacion_catedra)                                                  |
 
 #### Reglas de nombrado
 
