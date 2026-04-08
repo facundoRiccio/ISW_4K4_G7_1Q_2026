@@ -11,7 +11,7 @@ Este repositorio pertenece al grupo 7 de Ingenieria y Calidad de Software del cu
 * Marin, Imanol - 90188
 * Oviedo, Emiliano - 94847
 * Riccio, Facundo Samuel - 89925
-* Rodríguez, Anibal - 402936
+* [Rodriguez, Anibal - 402936](https://github.com/rPachu)
 * Tonelli, Gregorio - 86166
 * Zarate Almada, Santiago - 95090
 
