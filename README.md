@@ -5,7 +5,7 @@ Este repositorio pertenece al grupo 7 de Ingenieria y Calidad de Software del cu
 ### Integrantes
 * Bonugli, Joaquín - 400620
 * Chavez, Camila - 71805
-* Fernández, Pablo Gabriel - 95695
+* [Fernández, Pablo Gabriel - 95695](https://github.com/FernandezPabloGabriel)
 * Guardatti, Nicolás - 82180
 * Jorge Lorenzo, Francisco - 86582
 * Marin, Imanol - 90188
@@ -77,7 +77,7 @@ Los nombres de los archivos van a estar en formato kebab case: "kebab-case"
   - **TPIG** → Trabajo Práctico de Investigación Grupal.
 - **DDMM** → Formato de fecha Día/Mes.
 - **K** → Referencia a la carrera de grado *Ingeniería en Sistemas de Información* (ej: 4K4).
-- **EXT** → Extensión del archivo.
+- **EXT** → Extensión de archivo editable que abarca .pdf, .md, .txt, .png, .jpeg, .xlsx, .docx, según corresponda al mismo.
 
 ---
 
