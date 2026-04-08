@@ -87,14 +87,15 @@ Los nombres de los archivos van a estar en formato kebab case: "kebab-case"
   - **TPIG** → Trabajo Práctico de Investigación Grupal.
 - **DDMM** → Formato de fecha Día/Mes.
 - **K** → Referencia a la carrera de grado *Ingeniería en Sistemas de Información* (ej: 4K4).
+- **EXT** → Extensión del archivo.
 
 ---
 
 ### Criterio de linea base
 
-Para nosotros, la **línea base** representa el punto de referencia oficial dentro del repositorio, a partir del cual se controlarán todas las modificaciones.
+En nuestro proyecto, definimos una línea base luego de la devolución y corrección de cada Trabajo Práctico evaluable, momento en el cual se alcanza la versión final validada. Esta decisión la tomamos para que el repositorio refleje versiones consolidadas, correctas y alineadas con los criterios de la cátedra, evitando errores. De esta manera, cada línea base funciona como un punto de referencia estable para el seguimiento y control de cambios a lo largo del cuatrimestre. 
 
-Decidimos establecer una línea base cada vez que finalizamos la entrega de un **Trabajo Práctico evaluable** o de **investigación grupal**, incluyendo tanto la consigna como la entrega final y el material de apoyo relacionado.
+Para su identificación, adoptamos una convención de nombrado estructurada basada en el número de trabajo práctico y su versión final corregida, por ejemplo: LB-TP1-vFinal, LB-TP2-vFinal, garantizando trazabilidad y claridad en la evolución de los ítems de configuración.
 
 Un ítem de configuración será considerado parte de la línea base cuando:
 
