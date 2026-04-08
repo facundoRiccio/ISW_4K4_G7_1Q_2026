@@ -1,24 +1,30 @@
 Este repositorio pertenece al grupo 7 de Ingenieria y Calidad de Software del curso 4K4 del primer cuatrimestre de 2026.
 
-
-
 ---
 
 ### Integrantes
 
 Bonugli, Joaquín - 400620
+
 Chavez, Camila - 71805
+
 Fernández, Pablo Gabriel - 95695
+
 Guardatti, Nicolás - 82180
+
 Jorge Lorenzo, Francisco - 86582
+
 Marin, Imanol - 90188
+
 Oviedo, Emiliano - 94847
+
 Riccio, Facundo Samuel - 89925
+
 Rodríguez, Anibal - 402936
+
 Tonelli, Gregorio - 86166
+
 Zarate Almada, Santiago - 95090
-
-
 
 ---
 
@@ -47,17 +53,23 @@ ISW_4K4_G7_1Q_2026
     └── trabajo_<<numero>>
 ```
 
-
-
 ---
 
 ### Listado de items
 
-completar listado de items
-
-analiza el readme, lo que quiero que hagas es que modifiques el listado de items en base a nuestra estructura y reglas de nombrado
-
-
+| **Ítem de Configuración**    | **Regla de Nombrado**                         | **Ubicación**                                                            |
+| ---------------------------- | --------------------------------------------- | ------------------------------------------------------------------------ |
+| **Ejercicios**               | `ejercicio-<<tema>>-<<autor>>.<<ext>>`        | `material_de_alumnos/ejercicios`                                         |
+| **Toma de Notas**            | `toma-notas-<<ddmm>>-<<autor>>.<<ext>>`       | `material_de_alumnos/toma_de_notas`                                      |
+| **Resumen**                  | `resumen-<<numero-unidad>>-<<autor>>.<<ext>>` | `material_de_alumnos/resumenes`                                          |
+| **Bibliografía**             | `<<nombre-archivo>>.pdf`                      | `material_de_catedra/u_<<numero_unidad>>_<<nombre_unidad>>/bibliografia` |
+| **Diapositiva de Clase**     | `<<nombre-archivo>>.pdf`                      | `material_de_catedra/u_<<numero_unidad>>_<<nombre_unidad>>/filminas`     |
+| **Consigna de TPIG**         | `consigna-tpig-<<numero>>.pdf`                | `trabajos_investigacion`                                                 |
+| **Presentación TPIG**        | `presentacion-tpig-<<numero>>.<<ext>>`        | `trabajos_investigacion`                                                 |
+| **Consigna de TP Evaluable** | `consigna-tp-<<numero>>.pdf`                  | `trabajos_practicos_evaluables/trabajo_<<numero>>`                       |
+| **Entrega de TP Evaluable**  | `entrega-tp-<<numero>>.<<ext>>`               | `trabajos_practicos_evaluables/trabajo_<<numero>>`                       |
+| **Cronograma**               | `cronograma-isw.xlsx`                         | `planificacion_catedra`                                                  |
+| **Programa**                 | `programa-isw.pdf`                            | `planificacion_catedra`                                                  |
 
 #### Reglas de nombrado
 
@@ -68,6 +80,13 @@ Los nombres de los archivos van a estar en formato kebab case: "kebab-case"
 ---
 
 ### Glosario
+
+- **ISW** → Ingeniería y Calidad de Software.
+- **U** → Unidad (de contenido).
+- **TP** → Trabajo Práctico.
+  - **TPIG** → Trabajo Práctico de Investigación Grupal.
+- **DDMM** → Formato de fecha Día/Mes.
+- **K** → Referencia a la carrera de grado *Ingeniería en Sistemas de Información* (ej: 4K4).
 
 ---
 
