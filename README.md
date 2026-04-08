@@ -13,7 +13,7 @@ Este repositorio pertenece al grupo 7 de Ingenieria y Calidad de Software del cu
 * Riccio, Facundo Samuel - 89925
 * Rodríguez, Anibal - 402936
 * Tonelli, Gregorio - 86166
-* Zarate Almada, Santiago - 95090
+* [Zarate Almada, Santiago - 95090](https://github.com/zaratealmadasantiago)
 
 ---
 
