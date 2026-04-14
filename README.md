@@ -8,7 +8,7 @@ Este repositorio pertenece al grupo 7 de Ingenieria y Calidad de Software del cu
 * [Fernández, Pablo Gabriel - 95695](https://github.com/FernandezPabloGabriel)
 * Guardatti, Nicolás - 82180
 * Jorge Lorenzo, Francisco - 86582
-* [Marin, Imanol - 90188] (https://github.com/imanolmarin)
+* [Marin, Imanol - 90188](https://github.com/imanolmarin)
 * Oviedo, Emiliano - 94847
 * [Riccio, Facundo Samuel - 89925](https://github.com/facundoRiccio)
 * Rodríguez, Anibal - 402936
@@ -30,7 +30,7 @@ ISW_4K4_G7_1Q_2026
 │   └── resumenes
 │
 ├── material_de_catedra
-│   └── u_<>numero_unidad>>_<<nombre_unidad>>
+│   └── u_<<numero_unidad>>_<<nombre_unidad>>
 │       ├── bibliografia
 │       └── filminas
 │
