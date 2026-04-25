@@ -10,6 +10,8 @@ Este repositorio pertenece al grupo 7 de Ingenieria y Calidad de Software del cu
 * Jorge Lorenzo, Francisco - 86582
 * [Marin, Imanol - 90188](https://github.com/imanolmarin)
 * Oviedo, Emiliano - 94847
+* Riccio, Facundo Samuel - 89925
+* [Rodriguez, Anibal - 402936](https://github.com/rPachu)
 * [Riccio, Facundo Samuel - 89925](https://github.com/facundoRiccio)
 * Rodríguez, Anibal - 402936
 * [Tonelli, Gregorio - 86166](https://github.com/gregotonepelle)
