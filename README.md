@@ -3,7 +3,7 @@ Este repositorio pertenece al grupo 7 de Ingenieria y Calidad de Software del cu
 ---
 
 ### Integrantes
-* Bonugli, Joaquín - 400620
+* [Bonugli, Joaquín - 400620](https://github.com/joaquin-bonugli-utn)
 * Chavez, Camila - 71805
 * [Fernández, Pablo Gabriel - 95695](https://github.com/FernandezPabloGabriel)
 * Guardatti, Nicolás - 82180
@@ -12,7 +12,7 @@ Este repositorio pertenece al grupo 7 de Ingenieria y Calidad de Software del cu
 * Oviedo, Emiliano - 94847
 * [Riccio, Facundo Samuel - 89925](https://github.com/facundoRiccio)
 * Rodríguez, Anibal - 402936
-* Tonelli, Gregorio - 86166
+* [Tonelli, Gregorio - 86166](https://github.com/gregotonepelle)
 * [Zarate Almada, Santiago - 95090](https://github.com/zaratealmadasantiago)
 
 ---
@@ -30,8 +30,9 @@ ISW_4K4_G7_1Q_2026
 │   └── resumenes
 │
 ├── material_de_catedra
+│   ├── bibliografia
+│   │   └── <<tema>>
 │   └── u_<<numero_unidad>>_<<nombre_unidad>>
-│       ├── bibliografia
 │       └── filminas
 │
 ├── planificacion_catedra
@@ -49,15 +50,15 @@ ISW_4K4_G7_1Q_2026
 
 | **Ítem de Configuración**    | **Regla de Nombrado**                         | **Ubicación**                                                            |
 | ---------------------------- | --------------------------------------------- | ------------------------------------------------------------------------ |
-| **Ejercicios**               | `ejercicio-<<tema>>-<<autor>>.<<ext>>`        | [`material_de_alumnos/ejercicios`](material_de_alumnos/ejercicios)                                         |
-| **Toma de Notas**            | `toma-notas-<<ddmm>>-<<autor>>.<<ext>>`       | [`material_de_alumnos/toma_de_notas`](material_de_alumnos/toma_de_notas)                                      |
-| **Resumen**                  | `resumen-<<numero-unidad>>-<<autor>>.<<ext>>` | [`material_de_alumnos/resumenes`](material_de_alumnos/resumenes)                                          |
-| **Bibliografía**             | `<<nombre-archivo>>.pdf`                      | [`material_de_catedra/u_<<numero_unidad>>_<<nombre_unidad>>/bibliografia`](material_de_catedra) |
-| **Diapositiva de Clase**     | `<<nombre-archivo>>.pdf`                      | [`material_de_catedra/u_<<numero_unidad>>_<<nombre_unidad>>/filminas`](material_de_catedra)     |
+| **Ejercicios**               | `ejercicio-<<tema>>-<<autor>>.<<pdf>>`        | [`material_de_alumnos/ejercicios`](material_de_alumnos/ejercicios)                                         |
+| **Toma de Notas**            | `toma-notas-<<ddmm>>-<<autor>>.<<md>>`        | [`material_de_alumnos/toma_de_notas`](material_de_alumnos/toma_de_notas)                                      |
+| **Resumen**                  | `resumen-<<numero-unidad>>-<<autor>>.<<pdf>>` | [`material_de_alumnos/resumenes`](material_de_alumnos/resumenes)                                          |
+| **Bibliografía**             | `<<nombre-archivo>>.pdf`                      | [`material_de_catedra/bibliografia/<<tema>>`](material_de_catedra/bibliografia) |
+| **Diapositiva de Clase**     | `<<numero>>-<<nombre>>.pdf`                  | [`material_de_catedra/u_<<numero_unidad>>_<<nombre_unidad>>/filminas`](material_de_catedra)     |
 | **Consigna de TPIG**         | `consigna-tpig-<<numero>>.pdf`                | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
-| **Presentación TPIG**        | `presentacion-tpig-<<numero>>.<<ext>>`        | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
+| **Presentación TPIG**        | `presentacion-tpig-<<numero>>.<<pdf>>`        | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
 | **Consigna de TP Evaluable** | `consigna-tp-<<numero>>.pdf`                  | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
-| **Entrega de TP Evaluable**  | `entrega-tp-<<numero>>.<<ext>>`               | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
+| **Entrega de TP Evaluable**  | `entrega-tp-<<numero>>.<<pdf/png>>`               | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
 | **Cronograma**               | `cronograma-isw.xlsx`                         | [`planificacion_catedra`](planificacion_catedra)                                                  |
 | **Programa**                 | `programa-isw.pdf`                            | [`planificacion_catedra`](planificacion_catedra) 
 
@@ -77,7 +78,9 @@ Los nombres de los archivos van a estar en formato kebab case: "kebab-case"
   - **TPIG** → Trabajo Práctico de Investigación Grupal.
 - **DDMM** → Formato de fecha Día/Mes.
 - **K** → Referencia a la carrera de grado *Ingeniería en Sistemas de Información* (ej: 4K4).
-- **EXT** → Extensión de archivo editable que abarca .pdf, .md, .txt, .png, .jpeg, .xlsx, .docx, según corresponda al mismo.
+- **PDF** → Extensión de archivo .pdf.
+- **MD** → Extensión de archivo .md.
+- **XLSX** → Extensión de archivo .xlsx.
 
 ---
 
