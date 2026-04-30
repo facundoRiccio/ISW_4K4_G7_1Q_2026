@@ -9,7 +9,7 @@ Este repositorio pertenece al grupo 7 de Ingenieria y Calidad de Software del cu
 * Guardatti, Nicolás - 82180
 * Jorge Lorenzo, Francisco - 86582
 * [Marin, Imanol - 90188](https://github.com/imanolmarin)
-* Oviedo, Emiliano - 94847
+* [Oviedo, Emiliano - 94847](https://github.com/OviedoEmiliano)
 * [Riccio, Facundo Samuel - 89925](https://github.com/facundoRiccio)
 * [Rodriguez, Anibal - 402936](https://github.com/rPachu)
 * [Tonelli, Gregorio - 86166](https://github.com/gregotonepelle)
