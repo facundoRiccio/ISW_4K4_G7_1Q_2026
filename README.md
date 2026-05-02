@@ -100,4 +100,4 @@ Un ítem de configuración será considerado parte de la línea base cuando:
 
 ### Link a este repositorio
 
-[GitHub - s4mr1x/ISW_4K4_G7_1Q_2026](https://github.com/facundoRiccio/ISW_4K4_G7_1Q_2026)
+[GitHub - facundoRiccio/ISW_4K4_G7_1Q_2026](https://github.com/facundoRiccio/ISW_4K4_G7_1Q_2026)
