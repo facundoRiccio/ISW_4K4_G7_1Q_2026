@@ -58,7 +58,7 @@ ISW_4K4_G7_1Q_2026
 | **Consigna de TPIG**         | `consigna-tpig-<<numero>>.pdf`                | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
 | **Presentación TPIG**        | `presentacion-tpig-<<numero>>.<<pdf>>`        | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
 | **Consigna de TP Evaluable** | `consigna-tp-<<numero>>.pdf`                  | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
-| **Entrega de TP Evaluable**  | `entrega-tp-<<numero>>.<<pdf/png>>`               | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
+| **Entrega de TP Evaluable**  | `entrega-tp-<<numero>>.<<pdf/png/d>>`               | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
 | **Cronograma**               | `cronograma-isw.xlsx`                         | [`planificacion_catedra`](planificacion_catedra)                                                  |
 | **Programa**                 | `programa-isw.pdf`                            | [`planificacion_catedra`](planificacion_catedra) 
 
