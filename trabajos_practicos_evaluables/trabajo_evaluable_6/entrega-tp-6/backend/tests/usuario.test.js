@@ -16,6 +16,6 @@ describe('validarUsuarioRegistrado', () => {
   })
 
   it('debería retornar true si el usuario existe y está registrado', () => {
-    expect(validarUsuarioRegistrado(1)).toBe(true)
+    expect(validarUsuarioRegistrado(100)).toBe(true)
   })
 })
