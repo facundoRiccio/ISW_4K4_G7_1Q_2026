@@ -6,7 +6,7 @@ Este repositorio pertenece al grupo 7 de Ingenieria y Calidad de Software del cu
 * [Bonugli, Joaquín - 400620](https://github.com/joaquin-bonugli-utn)
 * Chavez, Camila - 71805
 * [Fernández, Pablo Gabriel - 95695](https://github.com/FernandezPabloGabriel)
-* Guardatti, Nicolás - 82180
+* [Guardatti, Nicolás - 82180](https://github.com/Guardatti)
 * Jorge Lorenzo, Francisco - 86582
 * [Marin, Imanol - 90188](https://github.com/imanolmarin)
 * [Oviedo, Emiliano - 94847](https://github.com/OviedoEmiliano)
