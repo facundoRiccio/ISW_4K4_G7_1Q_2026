@@ -32,9 +32,9 @@ ISW_4K4_G7_1Q_2026
 ├── material_de_catedra
 │   ├── bibliografia
 │   │   └── <<tema>>
-│   ├── u_<<numero_unidad>>_<<nombre_unidad>>
-│   │   └── filminas
-│   └── templates
+│   ├── templates
+│   └── u_<<numero_unidad>>_<<nombre_unidad>>
+│       └── filminas
 │
 │
 ├── planificacion_catedra
@@ -56,8 +56,8 @@ ISW_4K4_G7_1Q_2026
 | **Toma de Notas**            | `toma-notas-<<ddmm>>-<<autor>>.<<md>>`        | [`material_de_alumnos/toma_de_notas`](material_de_alumnos/toma_de_notas)                                      |
 | **Resumen**                  | `resumen-<<numero-unidad>>-<<autor>>.<<pdf>>` | [`material_de_alumnos/resumenes`](material_de_alumnos/resumenes)                                          |
 | **Bibliografía**             | `<<nombre-archivo>>.pdf`                      | [`material_de_catedra/bibliografia/<<tema>>`](material_de_catedra/bibliografia) |
+| **Templates**               | `template-<<tema>>-<<autor>>.<<pdf>>`         | [`material_de_catedra/templates`](material_de_catedra/templates) |
 | **Diapositiva de Clase**     | `<<numero>>-<<nombre>>.pdf`                  | [`material_de_catedra/u_<<numero_unidad>>_<<nombre_unidad>>/filminas`](material_de_catedra)     |
-| **Temmplates**               | `template-<<tema>>-<<autor>>.<<pdf>>`         | [`material_de_catedra/templates`](material_de_catedra/templates) |
 | **Consigna de TPIG**         | `consigna-tpig-<<numero>>.pdf`                | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
 | **Presentación TPIG**        | `presentacion-tpig-<<numero>>.<<pdf>>`        | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
 | **Consigna de TP Evaluable** | `consigna-tp-<<numero>>.pdf`                  | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
