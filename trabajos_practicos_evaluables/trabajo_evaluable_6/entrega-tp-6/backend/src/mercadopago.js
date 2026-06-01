@@ -1,4 +1,5 @@
 import { MercadoPagoConfig, Preference } from 'mercadopago'
+import { calcularPrecioConDescuento } from './descuentos.js'
 
 const PRECIOS = {
   regular: 10000,
@@ -29,7 +30,7 @@ export const generarPreferenciaPago = async (items) => {
   const itemsMP = items.map((item) => ({
     title: `Entrada EcoHarmony Park - ${item.tipoPase.toUpperCase()}`,
     quantity: item.cantidad,
-    unit_price: PRECIOS[item.tipoPase],
+    unit_price: calcularPrecioConDescuento(item.edad, item.tipoPase, PRECIOS[item.tipoPase]),
     currency_id: 'ARS'
   }))
 

@@ -61,7 +61,9 @@
 }
 
 /* ── Reset & Base ── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -84,7 +86,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img, svg {
+img,
+svg {
   display: block;
   max-width: 100%;
 }
@@ -104,7 +107,7 @@ img, svg {
 
 .site-header__logo {
   font-size: var(--font-size-2xl);
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .site-header__title {
@@ -112,7 +115,7 @@ img, svg {
   font-weight: 900;
   color: var(--color-crema);
   letter-spacing: 0.03em;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .site-header__subtitle {
@@ -241,7 +244,7 @@ img, svg {
   padding: var(--space-4) var(--space-3);
   border: 2px solid rgba(106, 153, 78, 0.3);
   border-radius: var(--radius-md);
-  background: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   transition: all var(--transition-base);
   text-align: center;
@@ -253,7 +256,7 @@ img, svg {
   transform: translateY(-2px);
 }
 
-.pago-option input[type="radio"]:checked + .pago-option__label {
+.pago-option input[type="radio"]:checked+.pago-option__label {
   border-color: var(--color-verde-helecho);
   background: rgba(106, 153, 78, 0.15);
   box-shadow: 0 0 0 3px rgba(106, 153, 78, 0.15);
@@ -278,23 +281,126 @@ img, svg {
 /* ── Visitantes dinámicos ── */
 .visitantes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-3);
   margin-top: var(--space-3);
 }
 
-.visitante-item {
+.visitante-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-4);
+  align-items: stretch;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid rgba(106, 153, 78, 0.2);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow-sm);
+}
+
+.visitante-card__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.visitante-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.visitante-card__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.visitante-card__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+  background: rgba(167, 201, 87, 0.16);
+  color: var(--color-verde-cazador);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.visitante-card__fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+.visitante-card__field {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
 }
 
-.visitante-item label {
+.visitante-card__field label {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.visitante-card__price {
+  min-width: 140px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(56, 102, 65, 0.08), rgba(167, 201, 87, 0.16));
+  border: 1px solid rgba(106, 153, 78, 0.18);
+}
+
+.visitante-card__price-label {
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.visitante-card__price-value {
+  margin-top: var(--space-1);
+  font-size: var(--font-size-lg);
+  font-weight: 900;
+  color: var(--color-verde-cazador);
+}
+
+.purchase-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  background: rgba(56, 102, 65, 0.08);
+  border: 1.5px solid rgba(56, 102, 65, 0.15);
+}
+
+.purchase-summary__label {
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.purchase-summary__value {
+  font-size: var(--font-size-xl);
+  font-weight: 900;
+  color: var(--color-verde-cazador);
 }
 
 /* ── Divisor de sección ── */
@@ -382,14 +488,16 @@ img, svg {
 .spinner {
   width: 20px;
   height: 20px;
-  border: 2.5px solid rgba(255,255,255,0.4);
+  border: 2.5px solid rgba(255, 255, 255, 0.4);
   border-top-color: white;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ── Error Banner ── */
@@ -419,8 +527,15 @@ img, svg {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── Resumen de compra (éxito efectivo) ── */
@@ -449,8 +564,15 @@ img, svg {
 }
 
 @keyframes popIn {
-  from { transform: scale(0.5); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .resumen-card__title {
@@ -510,8 +632,15 @@ img, svg {
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .mp-redirect__title {
@@ -642,6 +771,24 @@ img, svg {
 
   .pago-selector {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .visitante-card {
+    grid-template-columns: 1fr;
+  }
+
+  .visitante-card__fields {
+    grid-template-columns: 1fr;
+  }
+
+  .visitante-card__price {
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .purchase-summary {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .section-title {

@@ -63,7 +63,8 @@ app.post('/api/comprar-entradas', async (req, res) => {
     // 6. Si paga con tarjeta → generar preferencia en Mercado Pago
     if (formaPago === 'tarjeta') {
       const items = visitantes.map((v) => ({
-        tipoPase: tipoPase,
+        edad: v.edad,
+        tipoPase: v.pase || tipoPase,
         cantidad: 1
       }))
 
