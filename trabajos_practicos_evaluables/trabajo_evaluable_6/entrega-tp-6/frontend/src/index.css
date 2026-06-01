@@ -551,6 +551,75 @@ img, svg {
   background: #007ec2;
 }
 
+/* ── Header: usuario logueado ── */
+.site-header__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.site-header__username {
+  font-size: var(--font-size-sm);
+  color: var(--color-crema);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.btn-logout {
+  padding: var(--space-1) var(--space-3);
+  background: rgba(242, 232, 207, 0.15);
+  color: var(--color-crema);
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1.5px solid rgba(242, 232, 207, 0.4);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-logout:hover {
+  background: rgba(242, 232, 207, 0.25);
+  border-color: rgba(242, 232, 207, 0.7);
+}
+
+/* ── Chip de sesión activa (TicketForm) ── */
+.usuario-sesion {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(56, 102, 65, 0.08);
+  border: 1.5px solid rgba(106, 153, 78, 0.3);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-5);
+}
+
+.usuario-sesion__icon {
+  font-size: var(--font-size-lg);
+}
+
+.usuario-sesion__nombre {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  flex: 1;
+}
+
+.usuario-sesion__badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-verde-helecho);
+  background: rgba(106, 153, 78, 0.15);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(106, 153, 78, 0.3);
+}
+
 /* ── Footer ── */
 .site-footer {
   text-align: center;

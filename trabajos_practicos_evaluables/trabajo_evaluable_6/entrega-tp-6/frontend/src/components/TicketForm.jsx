@@ -1,13 +1,6 @@
 import { useState } from 'react'
 import ErrorBanner from './ErrorBanner'
 
-// Usuarios de prueba disponibles en la BD simulada del backend
-const USUARIOS_PRUEBA = [
-  { id: 100, nombre: 'Joaquín' },
-  { id: 200, nombre: 'Lucía' },
-  { id: 300, nombre: 'Mateo' }
-]
-
 // Fecha mínima: hoy en formato yyyy-mm-dd para el input date
 const hoyISO = () => new Date().toISOString().split('T')[0]
 
@@ -17,8 +10,7 @@ const formatearFechaBackend = (isoDate) => {
   return `${d}-${m}-${a}`
 }
 
-const TicketForm = ({ onExito }) => {
-  const [usuarioId, setUsuarioId] = useState('')
+const TicketForm = ({ onExito, usuarioLogueado }) => {
   const [email, setEmail] = useState('')
   const [fecha, setFecha] = useState('')
   const [cantidad, setCantidad] = useState(1)
@@ -50,11 +42,7 @@ const TicketForm = ({ onExito }) => {
 
     // Validaciones amigables orientadas al usuario
     const nuevosErrores = {}
-    
-    if (!usuarioId) {
-      nuevosErrores.usuarioId = 'Por favor, seleccioná tu usuario de la lista.'
-    }
-    
+
     if (!email) {
       nuevosErrores.email = 'El correo electrónico es obligatorio para enviarte las entradas.'
     } else if (!/^\S+@\S+\.\S+$/.test(email)) {
@@ -92,7 +80,7 @@ const TicketForm = ({ onExito }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          usuarioId: Number(usuarioId),
+          usuarioId: usuarioLogueado.id,
           email,
           fecha: formatearFechaBackend(fecha),
           cantidad: cantidadNum,
@@ -109,7 +97,7 @@ const TicketForm = ({ onExito }) => {
       } else {
         onExito(data)
       }
-    } catch (err) {
+    } catch {
       setError('No pudimos conectar con el servidor. Revisá tu conexión o intentá más tarde.')
     } finally {
       setCargando(false)
@@ -123,25 +111,10 @@ const TicketForm = ({ onExito }) => {
       {/* ── Sección: Datos del visitante ── */}
       <p className="form-section-title">Datos del visitante</p>
 
-      <div className="form-group">
-        <label className="form-label" htmlFor="select-usuario">
-          Usuario <span>*</span>
-        </label>
-        <select
-          id="select-usuario"
-          className={`form-select ${erroresValidacion.usuarioId ? 'input-error' : ''}`}
-          value={usuarioId}
-          onChange={(e) => {
-            setUsuarioId(e.target.value)
-            if (erroresValidacion.usuarioId) setErroresValidacion({ ...erroresValidacion, usuarioId: null })
-          }}
-        >
-          <option value="" disabled>Seleccioná tu usuario</option>
-          {USUARIOS_PRUEBA.map((u) => (
-            <option key={u.id} value={u.id}>{u.nombre} (ID: {u.id})</option>
-          ))}
-        </select>
-        {erroresValidacion.usuarioId && <p className="error-text">{erroresValidacion.usuarioId}</p>}
+      <div className="usuario-sesion">
+        <span className="usuario-sesion__icon" aria-hidden="true">👤</span>
+        <span className="usuario-sesion__nombre">{usuarioLogueado?.nombre}</span>
+        <span className="usuario-sesion__badge">Sesión activa</span>
       </div>
 
       <div className="form-group">
