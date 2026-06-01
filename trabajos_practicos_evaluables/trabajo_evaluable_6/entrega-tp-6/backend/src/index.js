@@ -7,9 +7,11 @@ import { validarFechaVisita } from './fecha.js'
 import { validarFormaPago } from './formapago.js'
 import { validarYEnviarEmail } from './email.js'
 import { validarUsuarioRegistrado } from './usuario.js'
+import { validarVisitantes } from './visitantes.js'
 import { generarPreferenciaPago } from './mercadopago.js'
 import { validarLogin } from './login.js'
 import { registrarUsuario } from './registro.js'
+import { construirComprobanteCompra } from './comprobante.js'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -47,20 +49,30 @@ app.post('/api/comprar-entradas', async (req, res) => {
     // 1. Validar usuario registrado
     validarUsuarioRegistrado(usuarioId)
 
-    // 2. Validar email y enviarlo (async)
-    const mensaje = `Compraste ${cantidad} entrada(s) para el ${fecha}. Tipo de pase: ${tipoPase}. Presentate en boletería si abonás en efectivo.`
-    await validarYEnviarEmail(email, mensaje)
-
-    // 3. Validar fecha
+    // 2. Validar fecha
     validarFechaVisita(fecha)
 
-    // 4. Validar cantidad de entradas
+    // 3. Validar cantidad de entradas
     validarCompraEntradas(cantidad)
+
+    // 4. Validar visitantes
+    validarVisitantes(visitantes, cantidad)
 
     // 5. Validar forma de pago
     validarFormaPago(formaPago)
 
-    // 6. Si paga con tarjeta → generar preferencia en Mercado Pago
+    // 6. Armar comprobante reutilizable para backend, frontend y mail
+    const comprobante = construirComprobanteCompra({
+      fecha,
+      email,
+      visitantes,
+      formaPago
+    })
+
+    // 7. Enviar mail de confirmación con el comprobante completo
+    await validarYEnviarEmail(email, comprobante)
+
+    // 8. Si paga con tarjeta → generar preferencia en Mercado Pago
     if (formaPago === 'tarjeta') {
       const items = visitantes.map((v) => ({
         edad: v.edad,
@@ -74,21 +86,16 @@ app.post('/api/comprar-entradas', async (req, res) => {
         ok: true,
         formaPago: 'tarjeta',
         init_point: preferencia.init_point,
-        sandbox_init_point: preferencia.sandbox_init_point
+        sandbox_init_point: preferencia.sandbox_init_point,
+        resumen: comprobante
       })
     }
 
-    // 7. Si paga en efectivo → devolver resumen
+    // 9. Si paga en efectivo → devolver resumen
     return res.json({
       ok: true,
       formaPago: 'efectivo',
-      resumen: {
-        cantidad,
-        fecha,
-        tipoPase,
-        email,
-        mensaje: `Compraste ${cantidad} entrada(s) para el ${fecha}. Presentate en boletería para abonar.`
-      }
+      resumen: comprobante
     })
   } catch (err) {
     return res.status(400).json({ ok: false, error: err.message })
