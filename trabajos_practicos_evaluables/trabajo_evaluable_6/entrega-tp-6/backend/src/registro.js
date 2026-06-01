@@ -9,6 +9,10 @@ export const registrarUsuario = (nombre, password) => {
     throw new Error('La contraseña es obligatoria')
   }
 
+  if (password.trim().length < 4) {
+    throw new Error('La contraseña debe tener al menos 4 caracteres')
+  }
+
   const usuarioExistente = obtenerUsuarioPorNombre(nombre.trim())
 
   if (usuarioExistente) {
