@@ -9,12 +9,24 @@ import { validarYEnviarEmail } from './email.js'
 import { validarUsuarioRegistrado } from './usuario.js'
 import { generarPreferenciaPago } from './mercadopago.js'
 import { validarLogin } from './login.js'
+import { registrarUsuario } from './registro.js'
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json())
+
+// POST /api/registro
+app.post('/api/registro', (req, res) => {
+  const { nombre, password } = req.body
+  try {
+    const usuario = registrarUsuario(nombre, password)
+    return res.status(201).json({ ok: true, usuario })
+  } catch (err) {
+    return res.status(400).json({ ok: false, error: err.message })
+  }
+})
 
 // POST /api/login
 app.post('/api/login', (req, res) => {
