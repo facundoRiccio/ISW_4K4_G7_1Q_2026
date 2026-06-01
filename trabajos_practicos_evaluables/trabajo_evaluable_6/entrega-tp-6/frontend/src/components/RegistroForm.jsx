@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ErrorBanner from './ErrorBanner'
 
-const LoginForm = ({ onLogin, onIrARegistro }) => {
+const RegistroForm = ({ onRegistro, onIrALogin }) => {
   const [nombre, setNombre] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -16,7 +16,7 @@ const LoginForm = ({ onLogin, onIrARegistro }) => {
     const nuevosErrores = {}
 
     if (!nombre.trim()) {
-      nuevosErrores.nombre = 'Ingresá tu nombre de usuario.'
+      nuevosErrores.nombre = 'Ingresá un nombre de usuario.'
     }
 
     if (!password.trim()) {
@@ -32,7 +32,7 @@ const LoginForm = ({ onLogin, onIrARegistro }) => {
     setCargando(true)
 
     try {
-      const respuesta = await fetch('http://localhost:3000/api/login', {
+      const respuesta = await fetch('http://localhost:3000/api/registro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nombre: nombre.trim(), password })
@@ -41,9 +41,9 @@ const LoginForm = ({ onLogin, onIrARegistro }) => {
       const data = await respuesta.json()
 
       if (!data.ok) {
-        setError(data.error || 'No pudimos iniciar sesión. Revisá tus datos.')
+        setError(data.error || 'No pudimos completar el registro. Intentá de nuevo.')
       } else {
-        onLogin(data.usuario)
+        onRegistro(data.usuario)
       }
     } catch {
       setError('No pudimos conectar con el servidor. Revisá tu conexión o intentá más tarde.')
@@ -53,20 +53,20 @@ const LoginForm = ({ onLogin, onIrARegistro }) => {
   }
 
   return (
-    <form className="card" onSubmit={handleSubmit} noValidate aria-label="Formulario de inicio de sesión">
+    <form className="card" onSubmit={handleSubmit} noValidate aria-label="Formulario de registro">
       <ErrorBanner mensaje={error} />
 
-      <p className="form-section-title">Acceso al sistema</p>
+      <p className="form-section-title">Crear cuenta</p>
 
       <div className="form-group">
-        <label className="form-label" htmlFor="input-nombre">
+        <label className="form-label" htmlFor="input-nombre-registro">
           Nombre de usuario <span>*</span>
         </label>
         <input
-          id="input-nombre"
+          id="input-nombre-registro"
           type="text"
           className={`form-input ${erroresValidacion.nombre ? 'input-error' : ''}`}
-          placeholder="Tu nombre"
+          placeholder="Elegí un nombre de usuario"
           value={nombre}
           onChange={(e) => {
             setNombre(e.target.value)
@@ -78,20 +78,20 @@ const LoginForm = ({ onLogin, onIrARegistro }) => {
       </div>
 
       <div className="form-group">
-        <label className="form-label" htmlFor="input-password">
+        <label className="form-label" htmlFor="input-password-registro">
           Contraseña <span>*</span>
         </label>
         <input
-          id="input-password"
+          id="input-password-registro"
           type="password"
           className={`form-input ${erroresValidacion.password ? 'input-error' : ''}`}
-          placeholder="Tu contraseña"
+          placeholder="Elegí una contraseña"
           value={password}
           onChange={(e) => {
             setPassword(e.target.value)
             if (erroresValidacion.password) setErroresValidacion({ ...erroresValidacion, password: null })
           }}
-          autoComplete="current-password"
+          autoComplete="new-password"
         />
         {erroresValidacion.password && <p className="error-text">{erroresValidacion.password}</p>}
       </div>
@@ -103,19 +103,19 @@ const LoginForm = ({ onLogin, onIrARegistro }) => {
         aria-busy={cargando}
       >
         {cargando
-          ? <><div className="spinner" aria-hidden="true" /> Verificando...</>
-          : '🌿 Ingresar'}
+          ? <><div className="spinner" aria-hidden="true" /> Registrando...</>
+          : '🌱 Crear cuenta'}
       </button>
 
       <button
         type="button"
         className="btn-secondary"
-        onClick={onIrARegistro}
+        onClick={onIrALogin}
       >
-        ¿No tenés cuenta? Registrate
+        ← Volver al inicio de sesión
       </button>
     </form>
   )
 }
 
-export default LoginForm
+export default RegistroForm

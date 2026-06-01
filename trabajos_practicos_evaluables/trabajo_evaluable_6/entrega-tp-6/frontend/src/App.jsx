@@ -1,16 +1,22 @@
 import { useState } from 'react'
 import LoginForm from './components/LoginForm'
+import RegistroForm from './components/RegistroForm'
 import TicketForm from './components/TicketForm'
 import ResumenCompra from './components/ResumenCompra'
 import MercadoPagoRedirect from './components/MercadoPagoRedirect'
 
 const App = () => {
-  // 'login' | 'form' | 'resumen' | 'mercadopago'
+  // 'login' | 'registro' | 'form' | 'resumen' | 'mercadopago'
   const [vista, setVista] = useState('login')
   const [usuarioLogueado, setUsuarioLogueado] = useState(null)
   const [datosExito, setDatosExito] = useState(null)
 
   const handleLogin = (usuario) => {
+    setUsuarioLogueado(usuario)
+    setVista('form')
+  }
+
+  const handleRegistro = (usuario) => {
     setUsuarioLogueado(usuario)
     setVista('form')
   }
@@ -58,7 +64,15 @@ const App = () => {
           <>
             <h2 className="section-title">Bienvenido</h2>
             <p className="section-subtitle">Iniciá sesión para comprar tus entradas</p>
-            <LoginForm onLogin={handleLogin} />
+            <LoginForm onLogin={handleLogin} onIrARegistro={() => setVista('registro')} />
+          </>
+        )}
+
+        {vista === 'registro' && (
+          <>
+            <h2 className="section-title">Crear cuenta</h2>
+            <p className="section-subtitle">Registrate para poder comprar tus entradas</p>
+            <RegistroForm onRegistro={handleRegistro} onIrALogin={() => setVista('login')} />
           </>
         )}
 
