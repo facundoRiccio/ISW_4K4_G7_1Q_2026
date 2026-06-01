@@ -1,8 +1,6 @@
 // Simulamos una tabla de usuarios en memoria
 const usuariosRegistrados = [
-  { id: 100, nombre: 'Joaquín' },
-  { id: 200, nombre: 'Lucía' },
-  { id: 300, nombre: 'Mateo' }
+  { id: 400, nombre: 'Pablo', email: 'pf93520@gmail.com' }
 ]
 
 export const obtenerUsuarioPorId = (id) => {
