@@ -4,6 +4,7 @@ import ErrorBanner from './ErrorBanner'
 const RegistroForm = ({ onRegistro, onIrALogin }) => {
   const [nombre, setNombre] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
   const [erroresValidacion, setErroresValidacion] = useState({})
   const [cargando, setCargando] = useState(false)
@@ -21,11 +22,19 @@ const RegistroForm = ({ onRegistro, onIrALogin }) => {
 
     if (!password.trim()) {
       nuevosErrores.password = 'La contraseña es obligatoria.'
+    } else if (password.trim().length < 4) {
+      nuevosErrores.password = 'La contraseña debe tener al menos 4 caracteres.'
+    }
+
+    if (!confirmPassword.trim()) {
+      nuevosErrores.confirmPassword = 'Repetí tu contraseña para confirmarla.'
+    } else if (password !== confirmPassword) {
+      nuevosErrores.confirmPassword = 'Las contraseñas no coinciden.'
     }
 
     if (Object.keys(nuevosErrores).length > 0) {
       setErroresValidacion(nuevosErrores)
-      setError('Completá todos los campos para continuar.')
+      setError('Revisá los campos antes de continuar.')
       return
     }
 
@@ -80,6 +89,9 @@ const RegistroForm = ({ onRegistro, onIrALogin }) => {
       <div className="form-group">
         <label className="form-label" htmlFor="input-password-registro">
           Contraseña <span>*</span>
+          <span style={{ fontWeight: 300, textTransform: 'none', letterSpacing: 0, marginLeft: '6px', color: 'var(--color-text-muted)' }}>
+            (mínimo 4 caracteres)
+          </span>
         </label>
         <input
           id="input-password-registro"
@@ -94,6 +106,25 @@ const RegistroForm = ({ onRegistro, onIrALogin }) => {
           autoComplete="new-password"
         />
         {erroresValidacion.password && <p className="error-text">{erroresValidacion.password}</p>}
+      </div>
+
+      <div className="form-group">
+        <label className="form-label" htmlFor="input-confirm-password">
+          Confirmar contraseña <span>*</span>
+        </label>
+        <input
+          id="input-confirm-password"
+          type="password"
+          className={`form-input ${erroresValidacion.confirmPassword ? 'input-error' : ''}`}
+          placeholder="Repetí tu contraseña"
+          value={confirmPassword}
+          onChange={(e) => {
+            setConfirmPassword(e.target.value)
+            if (erroresValidacion.confirmPassword) setErroresValidacion({ ...erroresValidacion, confirmPassword: null })
+          }}
+          autoComplete="new-password"
+        />
+        {erroresValidacion.confirmPassword && <p className="error-text">{erroresValidacion.confirmPassword}</p>}
       </div>
 
       <button

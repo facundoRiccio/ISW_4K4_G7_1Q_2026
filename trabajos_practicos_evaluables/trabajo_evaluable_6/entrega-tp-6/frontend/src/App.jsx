@@ -1,27 +1,74 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import LoginForm from './components/LoginForm'
 import RegistroForm from './components/RegistroForm'
 import TicketForm from './components/TicketForm'
 import ResumenCompra from './components/ResumenCompra'
 import MercadoPagoRedirect from './components/MercadoPagoRedirect'
 
+const SESSION_DURACION_MS = 5 * 60 * 1000 // 5 minutos
+
+const cargarSesion = () => {
+  try {
+    const guardada = sessionStorage.getItem('ecoharmony_sesion')
+    if (!guardada) return null
+    const { usuario, timestamp } = JSON.parse(guardada)
+    if (Date.now() - timestamp > SESSION_DURACION_MS) {
+      sessionStorage.removeItem('ecoharmony_sesion')
+      return null
+    }
+    return usuario
+  } catch {
+    return null
+  }
+}
+
+const guardarSesion = (usuario) => {
+  sessionStorage.setItem('ecoharmony_sesion', JSON.stringify({
+    usuario,
+    timestamp: Date.now()
+  }))
+}
+
+const borrarSesion = () => {
+  sessionStorage.removeItem('ecoharmony_sesion')
+}
+
 const App = () => {
+  const sesionInicial = cargarSesion()
+
   // 'login' | 'registro' | 'form' | 'resumen' | 'mercadopago'
-  const [vista, setVista] = useState('login')
-  const [usuarioLogueado, setUsuarioLogueado] = useState(null)
+  const [vista, setVista] = useState(sesionInicial ? 'form' : 'login')
+  const [usuarioLogueado, setUsuarioLogueado] = useState(sesionInicial)
   const [datosExito, setDatosExito] = useState(null)
 
+  // Chequea cada minuto si la sesión expiró
+  useEffect(() => {
+    if (!usuarioLogueado) return
+    const intervalo = setInterval(() => {
+      if (!cargarSesion()) {
+        borrarSesion()
+        setUsuarioLogueado(null)
+        setVista('login')
+        setDatosExito(null)
+      }
+    }, 60 * 1000)
+    return () => clearInterval(intervalo)
+  }, [usuarioLogueado])
+
   const handleLogin = (usuario) => {
+    guardarSesion(usuario)
     setUsuarioLogueado(usuario)
     setVista('form')
   }
 
   const handleRegistro = (usuario) => {
+    guardarSesion(usuario)
     setUsuarioLogueado(usuario)
     setVista('form')
   }
 
   const handleLogout = () => {
+    borrarSesion()
     setUsuarioLogueado(null)
     setVista('login')
     setDatosExito(null)
