@@ -35,4 +35,9 @@ describe('validarLogin', () => {
     expect(() => validarLogin('Joaquín', 'passwordincorrecta')).toThrow('Contraseña incorrecta')
   })
 
+  it('debería autenticar al usuario sin distinguir mayúsculas y minúsculas en el nombre', () => {
+    const resultado = validarLogin('JOAQUÍN', '1234')
+    expect(resultado).toEqual({ id: 100, nombre: 'Joaquín' })
+  })
+
 })
