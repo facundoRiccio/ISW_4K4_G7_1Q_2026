@@ -5,7 +5,7 @@ import TicketForm from './components/TicketForm'
 import ResumenCompra from './components/ResumenCompra'
 import MercadoPagoRedirect from './components/MercadoPagoRedirect'
 
-const SESSION_DURACION_MS = 5 * 60 * 1000 // 5 minutos
+const SESSION_DURACION_MS = 30 * 60 * 1000 // 30 minutos
 
 const cargarSesion = () => {
   try {
