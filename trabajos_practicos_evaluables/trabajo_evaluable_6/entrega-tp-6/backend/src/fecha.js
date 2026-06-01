@@ -20,7 +20,7 @@ export const validarFechaVisita = (fechaString) => {
 
   // 3. Validar días de apertura (getDay(): 0=Domingo, 5=Viernes, 6=Sábado) porque así lo definimos
   const diaSemana = fechaIngresada.getDay()
-  const diasPermitidos = [0, 5, 6]
+  const diasPermitidos = [0, 2, 3, 4, 5, 6] // Domingo, Martes, Miércoles, Jueves, Viernes, Sábado
 
   if (!diasPermitidos.includes(diaSemana)) {
     throw new Error('La fecha no cae en un día que abre el parque')
