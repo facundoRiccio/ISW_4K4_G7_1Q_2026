@@ -18,7 +18,7 @@ export const obtenerUsuarioPorId = (id) => {
 
 export const obtenerUsuarioPorNombre = (nombre) => {
   const usuarios = leerUsuarios()
-  return usuarios.find(u => u.nombre === nombre) || null
+  return usuarios.find(u => u.nombre.toLowerCase() === nombre.toLowerCase()) || null
 }
 
 export const guardarUsuario = (datos) => {

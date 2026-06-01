@@ -8,7 +8,7 @@ vi.mock('../src/database.js', () => ({
       { id: 200, nombre: 'Lucía', password: '1234' },
       { id: 300, nombre: 'Mateo', password: '1234' }
     ]
-    return usuarios.find(u => u.nombre === nombre) || null
+    return usuarios.find(u => u.nombre.toLowerCase() === nombre.toLowerCase()) || null
   }
 }))
 
