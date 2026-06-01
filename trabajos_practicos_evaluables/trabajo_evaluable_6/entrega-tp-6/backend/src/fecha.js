@@ -18,6 +18,11 @@ export const validarFechaVisita = (fechaString) => {
     throw new Error('La fecha no puede ser anterior a la fecha actual')
   }
 
+  const esFeriadoCerrado = (dia === 25 && mes === 12) || (dia === 1 && mes === 1)
+  if (esFeriadoCerrado) {
+    throw new Error('La fecha no cae en un día que abre el parque')
+  }
+
   // 3. Validar días de apertura (getDay(): 0=Domingo, 5=Viernes, 6=Sábado) porque así lo definimos
   const diaSemana = fechaIngresada.getDay()
   const diasPermitidos = [0, 2, 3, 4, 5, 6] // Domingo, Martes, Miércoles, Jueves, Viernes, Sábado
