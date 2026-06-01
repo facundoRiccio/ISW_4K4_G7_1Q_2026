@@ -1,12 +1,25 @@
 import { useState } from 'react'
+import LoginForm from './components/LoginForm'
 import TicketForm from './components/TicketForm'
 import ResumenCompra from './components/ResumenCompra'
 import MercadoPagoRedirect from './components/MercadoPagoRedirect'
 
 const App = () => {
-  // 'form' | 'resumen' | 'mercadopago'
-  const [vista, setVista] = useState('form')
+  // 'login' | 'form' | 'resumen' | 'mercadopago'
+  const [vista, setVista] = useState('login')
+  const [usuarioLogueado, setUsuarioLogueado] = useState(null)
   const [datosExito, setDatosExito] = useState(null)
+
+  const handleLogin = (usuario) => {
+    setUsuarioLogueado(usuario)
+    setVista('form')
+  }
+
+  const handleLogout = () => {
+    setUsuarioLogueado(null)
+    setVista('login')
+    setDatosExito(null)
+  }
 
   const handleExito = (data) => {
     setDatosExito(data)
@@ -26,18 +39,34 @@ const App = () => {
     <>
       <header className="site-header" role="banner">
         <span className="site-header__logo" aria-hidden="true">🌿</span>
-        <div>
+        <div style={{ flex: 1 }}>
           <h1 className="site-header__title">EcoHarmony Park</h1>
           <p className="site-header__subtitle">Naturaleza, armonía y aventura</p>
         </div>
+        {usuarioLogueado && (
+          <div className="site-header__user">
+            <span className="site-header__username">👤 {usuarioLogueado.nombre}</span>
+            <button className="btn-logout" onClick={handleLogout}>
+              Cerrar sesión
+            </button>
+          </div>
+        )}
       </header>
 
       <main className="main-content" id="main" role="main">
+        {vista === 'login' && (
+          <>
+            <h2 className="section-title">Bienvenido</h2>
+            <p className="section-subtitle">Iniciá sesión para comprar tus entradas</p>
+            <LoginForm onLogin={handleLogin} />
+          </>
+        )}
+
         {vista === 'form' && (
           <>
             <h2 className="section-title">Comprar Entradas</h2>
             <p className="section-subtitle">Completá el formulario y asegurá tu visita al parque</p>
-            <TicketForm onExito={handleExito} />
+            <TicketForm onExito={handleExito} usuarioLogueado={usuarioLogueado} />
           </>
         )}
 
