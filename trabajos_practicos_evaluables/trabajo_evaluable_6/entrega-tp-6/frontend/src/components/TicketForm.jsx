@@ -221,8 +221,8 @@ const TicketForm = ({ onExito, usuarioLogueado }) => {
           value={tipoPase}
           onChange={(e) => setTipoPase(e.target.value)}
         >
-          <option value="regular">Regular — $5.000 ARS por entrada</option>
-          <option value="vip">VIP — $10.000 ARS por entrada</option>
+          <option value="regular">Regular — $10.000 ARS por entrada</option>
+          <option value="vip">VIP — $20.000 ARS por entrada</option>
         </select>
       </div>
 

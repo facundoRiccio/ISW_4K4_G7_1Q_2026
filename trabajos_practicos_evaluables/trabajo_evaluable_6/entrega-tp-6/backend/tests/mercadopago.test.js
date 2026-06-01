@@ -43,7 +43,7 @@ describe('generarPreferenciaPago', () => {
     expect(resultado.init_point).toContain('mercadopago.com.ar')
   })
 
-  it('debería calcular correctamente el precio: regular=$5000, vip=$10000', async () => {
+  it('debería calcular correctamente el precio: regular=$10000, vip=$20000', async () => {
     mockCreate.mockResolvedValue({
       init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=test-456'
     })
@@ -51,10 +51,10 @@ describe('generarPreferenciaPago', () => {
     const items = [{ tipoPase: 'regular', cantidad: 3 }]
     await generarPreferenciaPago(items)
 
-    // Verificamos que el SDK fue llamado con el precio correcto ($5000 x 3 = $15000)
+    // Verificamos que el SDK fue llamado con el precio correcto ($10000 x 3 = $30000)
     const llamada = mockCreate.mock.calls[0][0]
     const item = llamada.body.items[0]
-    expect(item.unit_price).toBe(5000)
+    expect(item.unit_price).toBe(10000)
     expect(item.quantity).toBe(3)
   })
 

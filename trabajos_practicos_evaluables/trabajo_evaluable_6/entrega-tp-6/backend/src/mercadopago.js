@@ -1,8 +1,8 @@
 import { MercadoPagoConfig, Preference } from 'mercadopago'
 
 const PRECIOS = {
-  regular: 5000,
-  vip: 10000
+  regular: 10000,
+  vip: 20000
 }
 
 const TIPOS_VALIDOS = Object.keys(PRECIOS)
