@@ -24,6 +24,8 @@ describe('validarFechaVisita', () => {
 
     it('debería retornar un error si la fecha no cae en un día que abre el parque', () => {
         expect(() => validarFechaVisita('25-05-2026')).toThrow('La fecha no cae en un día que abre el parque');
+        expect(() => validarFechaVisita('25-12-2026')).toThrow('La fecha no cae en un día que abre el parque');
+        expect(() => validarFechaVisita('01-01-2027')).toThrow('La fecha no cae en un día que abre el parque');
     })
 
     it('debería retornar true si la fecha es válida', () => {
