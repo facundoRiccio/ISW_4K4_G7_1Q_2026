@@ -1,11 +1,22 @@
-// Simulamos una tabla de usuarios en memoria
-const usuariosRegistrados = [
-  { id: 100, nombre: 'Joaquín' },
-  { id: 200, nombre: 'Lucía' },
-  { id: 300, nombre: 'Mateo' }
-]
+import { readFileSync } from 'fs'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+const leerUsuarios = () => {
+  const ruta = join(__dirname, 'usuarios.json')
+  const contenido = readFileSync(ruta, 'utf-8')
+  return JSON.parse(contenido)
+}
 
 export const obtenerUsuarioPorId = (id) => {
-  const usuario = usuariosRegistrados.find(u => u.id === id)
-  return usuario || null
+  const usuarios = leerUsuarios()
+  return usuarios.find(u => u.id === id) || null
+}
+
+export const obtenerUsuarioPorNombre = (nombre) => {
+  const usuarios = leerUsuarios()
+  return usuarios.find(u => u.nombre === nombre) || null
 }

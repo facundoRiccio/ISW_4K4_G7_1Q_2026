@@ -8,12 +8,24 @@ import { validarFormaPago } from './formapago.js'
 import { validarYEnviarEmail } from './email.js'
 import { validarUsuarioRegistrado } from './usuario.js'
 import { generarPreferenciaPago } from './mercadopago.js'
+import { validarLogin } from './login.js'
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json())
+
+// POST /api/login
+app.post('/api/login', (req, res) => {
+  const { nombre, password } = req.body
+  try {
+    const usuario = validarLogin(nombre, password)
+    return res.json({ ok: true, usuario })
+  } catch (err) {
+    return res.status(401).json({ ok: false, error: err.message })
+  }
+})
 
 // POST /api/comprar-entradas
 app.post('/api/comprar-entradas', async (req, res) => {
