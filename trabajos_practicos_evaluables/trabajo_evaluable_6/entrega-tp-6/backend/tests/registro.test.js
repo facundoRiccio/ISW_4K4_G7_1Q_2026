@@ -33,4 +33,8 @@ describe('registrarUsuario', () => {
     expect(() => registrarUsuario('Joaquín', 'abcd')).toThrow('El nombre de usuario ya está en uso')
   })
 
+  it('debería lanzar un error si la contraseña tiene menos de 4 caracteres', () => {
+    expect(() => registrarUsuario('Carlos', 'abc')).toThrow('La contraseña debe tener al menos 4 caracteres')
+  })
+
 })
