@@ -19,5 +19,5 @@ export const validarLogin = (nombre, password) => {
     throw new Error('Contraseña incorrecta')
   }
 
-  return { id: usuario.id, nombre: usuario.nombre }
+  return { id: usuario.id, nombre: usuario.nombre, email: usuario.email }
 }
