@@ -4,9 +4,9 @@ import { validarLogin } from '../src/login.js'
 vi.mock('../src/database.js', () => ({
   obtenerUsuarioPorNombre: (nombre) => {
     const usuarios = [
-      { id: 100, nombre: 'Joaquín', password: '1234' },
-      { id: 200, nombre: 'Lucía', password: '1234' },
-      { id: 300, nombre: 'Mateo', password: '1234' }
+      { id: 100, nombre: 'Joaquín', email: 'joaquin@ecoharmony.com', password: '1234' },
+      { id: 200, nombre: 'Lucía', email: 'lucia@ecoharmony.com', password: '1234' },
+      { id: 300, nombre: 'Mateo', email: 'mateo@ecoharmony.com', password: '1234' }
     ]
     return usuarios.find(u => u.nombre.toLowerCase() === nombre.toLowerCase()) || null
   }
@@ -16,7 +16,7 @@ describe('validarLogin', () => {
 
   it('debería retornar el usuario si el nombre y contraseña son correctos', () => {
     const resultado = validarLogin('Joaquín', '1234')
-    expect(resultado).toEqual({ id: 100, nombre: 'Joaquín' })
+    expect(resultado).toEqual({ id: 100, nombre: 'Joaquín', email: 'joaquin@ecoharmony.com' })
   })
 
   it('debería lanzar un error si el nombre de usuario está vacío', () => {
@@ -37,7 +37,7 @@ describe('validarLogin', () => {
 
   it('debería autenticar al usuario sin distinguir mayúsculas y minúsculas en el nombre', () => {
     const resultado = validarLogin('JOAQUÍN', '1234')
-    expect(resultado).toEqual({ id: 100, nombre: 'Joaquín' })
+    expect(resultado).toEqual({ id: 100, nombre: 'Joaquín', email: 'joaquin@ecoharmony.com' })
   })
 
 })
