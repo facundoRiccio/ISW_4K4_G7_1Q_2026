@@ -181,6 +181,180 @@ svg {
   to { transform: translateX(100vw); }
 }
 
+/* ── Criaturas del parque (SVG con movimiento real) ── */
+.creature {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.creature svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* León que camina sobre las colinas */
+.walker {
+  bottom: 2vh;
+  top: auto;
+  width: 98px;
+  opacity: 0.92;
+  animation: walk-ltr 44s linear infinite;
+  animation-delay: -6s;
+}
+
+.walker__body {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: walker-bob 0.6s ease-in-out infinite;
+}
+
+.leg {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+}
+
+.leg-a { animation: leg-a 0.6s ease-in-out infinite; }
+.leg-b { animation: leg-b 0.6s ease-in-out infinite; }
+
+@keyframes leg-a {
+  0%, 100% { transform: rotate(16deg); }
+  50% { transform: rotate(-16deg); }
+}
+
+@keyframes leg-b {
+  0%, 100% { transform: rotate(-16deg); }
+  50% { transform: rotate(16deg); }
+}
+
+@keyframes walker-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes walk-ltr {
+  from { transform: translateX(-16vw); }
+  to { transform: translateX(116vw); }
+}
+
+/* Elefante: más grande, lento y en sentido contrario (espejado) */
+.walker--elephant {
+  width: 130px;
+  animation: walk-rtl-walker 60s linear infinite;
+  animation-delay: -25s;
+}
+
+/* Jirafa: alta y bien lenta */
+.walker--giraffe {
+  width: 78px;
+  animation: walk-ltr 72s linear infinite;
+  animation-delay: -50s;
+}
+
+@keyframes walk-rtl-walker {
+  from { transform: translateX(116vw) scaleX(-1); }
+  to { transform: translateX(-16vw) scaleX(-1); }
+}
+
+/* Pájaros con aleteo */
+.bird-fly--1 {
+  top: 13%;
+  width: 46px;
+  opacity: 0.85;
+  animation: fly-ltr 30s linear infinite;
+  animation-delay: -3s;
+}
+
+.bird-fly--2 {
+  top: 20%;
+  width: 34px;
+  opacity: 0.7;
+  animation: fly-rtl 40s linear infinite;
+  animation-delay: -18s;
+}
+
+.bird__wing {
+  transform-box: view-box;
+  transform-origin: 22px 13px;
+}
+
+.bird__wing--l { animation: flap-l 0.5s ease-in-out infinite; }
+.bird__wing--r { animation: flap-r 0.5s ease-in-out infinite; }
+
+@keyframes flap-l {
+  0%, 100% { transform: rotate(-18deg); }
+  50% { transform: rotate(14deg); }
+}
+
+@keyframes flap-r {
+  0%, 100% { transform: rotate(18deg); }
+  50% { transform: rotate(-14deg); }
+}
+
+@keyframes fly-ltr {
+  from { transform: translateX(-12vw); }
+  to { transform: translateX(112vw); }
+}
+
+@keyframes fly-rtl {
+  from { transform: translateX(112vw) scaleX(-1); }
+  to { transform: translateX(-12vw) scaleX(-1); }
+}
+
+/* Mariposas: vuelo en zigzag + aleteo */
+.butterfly--1 {
+  width: 26px;
+  animation: meander-1 26s linear infinite;
+}
+
+.butterfly--2 {
+  width: 22px;
+  opacity: 0.9;
+  animation: meander-2 33s linear infinite;
+  animation-delay: -9s;
+}
+
+.butterfly__wing {
+  transform-box: view-box;
+  transform-origin: 15px 13px;
+  animation: bflap 0.22s ease-in-out infinite;
+}
+
+@keyframes bflap {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.3); }
+}
+
+@keyframes meander-1 {
+  0% { transform: translate(-8vw, 56vh); }
+  20% { transform: translate(18vw, 42vh); }
+  40% { transform: translate(40vw, 58vh); }
+  60% { transform: translate(63vw, 40vh); }
+  80% { transform: translate(85vw, 55vh); }
+  100% { transform: translate(112vw, 45vh); }
+}
+
+@keyframes meander-2 {
+  0% { transform: translate(112vw, 34vh); }
+  25% { transform: translate(80vw, 50vh); }
+  50% { transform: translate(50vw, 33vh); }
+  75% { transform: translate(22vw, 49vh); }
+  100% { transform: translate(-8vw, 38vh); }
+}
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .creature,
+  .park-backdrop__cloud {
+    display: none;
+  }
+}
+
 /* Sectores del parque (card del panel lateral) */
 .sector-row {
   display: flex;
