@@ -1,6 +1,12 @@
+import Logo from './Logo'
+
 const InfoPanel = () => {
   return (
     <aside className='info-panel'>
+
+      <div className='info-panel__logo'>
+        <Logo size={120} />
+      </div>
 
       {/* ── Precios ── */}
       <div className='info-card info-card--precios'>

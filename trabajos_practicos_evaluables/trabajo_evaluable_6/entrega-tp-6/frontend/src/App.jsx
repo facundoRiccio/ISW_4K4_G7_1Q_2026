@@ -7,6 +7,7 @@ import MercadoPagoRedirect from './components/MercadoPagoRedirect'
 import InfoPanel from './components/InfoPanel'
 import ParkBackdrop from './components/ParkBackdrop'
 import Actividades from './components/Actividades'
+import Logo from './components/Logo'
 
 const SESSION_DURACION_MS = 30 * 60 * 1000 // 30 minutos
 
@@ -114,6 +115,7 @@ const App = () => {
       <main className={`main-content${vista === 'form' ? ' main-content--wide' : ''}`} id="main" role="main">
         {vista === 'login' && (
           <>
+            <div className="brand-hero"><Logo size={132} /></div>
             <h2 className="section-title">Bienvenido</h2>
             <p className="section-subtitle">Iniciá sesión para comprar tus entradas</p>
             <LoginForm onLogin={handleLogin} onIrARegistro={() => setVista('registro')} />
@@ -122,6 +124,7 @@ const App = () => {
 
         {vista === 'registro' && (
           <>
+            <div className="brand-hero"><Logo size={108} /></div>
             <h2 className="section-title">Crear cuenta</h2>
             <p className="section-subtitle">Registrate para poder comprar tus entradas</p>
             <RegistroForm onRegistro={handleRegistro} onIrALogin={() => setVista('login')} />
@@ -156,6 +159,7 @@ const App = () => {
       </main>
 
       <footer className="site-footer" role="contentinfo">
+        <Logo size={56} className="site-footer__logo" />
         <p>© 2026 EcoHarmony Park — Grupo 7 4K4 · ISW</p>
       </footer>
     </>
