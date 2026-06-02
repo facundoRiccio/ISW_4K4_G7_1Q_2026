@@ -3,6 +3,7 @@ import ErrorBanner from './ErrorBanner'
 
 const RegistroForm = ({ onRegistro, onIrALogin }) => {
   const [nombre, setNombre] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
@@ -18,6 +19,12 @@ const RegistroForm = ({ onRegistro, onIrALogin }) => {
 
     if (!nombre.trim()) {
       nuevosErrores.nombre = 'Ingresá un nombre de usuario.'
+    }
+
+    if (!email.trim()) {
+      nuevosErrores.email = 'El email es obligatorio.'
+    } else if (!/^\S+@\S+\.\S+$/.test(email.trim())) {
+      nuevosErrores.email = 'El email no tiene un formato válido (ej: tu@email.com).'
     }
 
     if (!password.trim()) {
@@ -44,7 +51,7 @@ const RegistroForm = ({ onRegistro, onIrALogin }) => {
       const respuesta = await fetch('http://localhost:3000/api/registro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nombre: nombre.trim(), password })
+        body: JSON.stringify({ nombre: nombre.trim(), email: email.trim(), password })
       })
 
       const data = await respuesta.json()
@@ -84,6 +91,25 @@ const RegistroForm = ({ onRegistro, onIrALogin }) => {
           autoComplete="username"
         />
         {erroresValidacion.nombre && <p className="error-text">{erroresValidacion.nombre}</p>}
+      </div>
+
+      <div className="form-group">
+        <label className="form-label" htmlFor="input-email-registro">
+          Email <span>*</span>
+        </label>
+        <input
+          id="input-email-registro"
+          type="email"
+          className={`form-input ${erroresValidacion.email ? 'input-error' : ''}`}
+          placeholder="tu@email.com"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value)
+            if (erroresValidacion.email) setErroresValidacion({ ...erroresValidacion, email: null })
+          }}
+          autoComplete="email"
+        />
+        {erroresValidacion.email && <p className="error-text">{erroresValidacion.email}</p>}
       </div>
 
       <div className="form-group">
