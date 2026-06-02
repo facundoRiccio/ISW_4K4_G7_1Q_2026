@@ -13,7 +13,7 @@ const formatearFechaBackend = (isoDate) => {
 }
 
 const TicketForm = ({ onExito, usuarioLogueado }) => {
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState(usuarioLogueado?.email || '')
   const [fecha, setFecha] = useState('')
   const [cantidad, setCantidad] = useState(1)
   const [visitantes, setVisitantes] = useState([crearVisitante()])
@@ -25,7 +25,7 @@ const TicketForm = ({ onExito, usuarioLogueado }) => {
 
   // No necesita useCallback: se pasa a un <input> nativo, no a un componente memoizado.
   const handleCantidadChange = (e) => {
-    const raw = e.target.value
+    const raw = e.target.value.replace(/\D/g, '') // solo dígitos: sin comas, puntos, signos ni "e"
     const val = raw === '' ? '' : Number(raw)
     setCantidad(val)
     setErroresValidacion((prev) => (prev.cantidad ? { ...prev, cantidad: null } : prev))
@@ -164,15 +164,19 @@ const TicketForm = ({ onExito, usuarioLogueado }) => {
         <input
           id="input-email"
           type="email"
-          className={`form-input ${erroresValidacion.email ? 'input-error' : ''}`}
+          className={`form-input ${usuarioLogueado?.email ? 'input-readonly' : ''} ${erroresValidacion.email ? 'input-error' : ''}`}
           placeholder="tu@email.com"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value)
             if (erroresValidacion.email) setErroresValidacion({ ...erroresValidacion, email: null })
           }}
+          readOnly={!!usuarioLogueado?.email}
           autoComplete="email"
         />
+        {usuarioLogueado?.email && (
+          <p className="email-note">📧 Te enviaremos las entradas a tu correo registrado.</p>
+        )}
         {erroresValidacion.email && <p className="error-text">{erroresValidacion.email}</p>}
       </div>
 
@@ -205,12 +209,13 @@ const TicketForm = ({ onExito, usuarioLogueado }) => {
         </label>
         <input
           id="input-cantidad"
-          type="number"
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
           className={`form-input ${erroresValidacion.cantidad ? 'input-error' : ''}`}
-          min={1}
-          max={10}
           value={cantidad}
           onChange={handleCantidadChange}
+          autoComplete="off"
         />
         {erroresValidacion.cantidad && <p className="error-text">{erroresValidacion.cantidad}</p>}
       </div>

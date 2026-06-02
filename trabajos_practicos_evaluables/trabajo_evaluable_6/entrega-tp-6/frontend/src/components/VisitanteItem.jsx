@@ -60,13 +60,14 @@ const VisitanteItem = memo(function VisitanteItem ({
               <label htmlFor={`input-edad-${index}`}>Edad</label>
               <input
                 id={`input-edad-${index}`}
-                type='number'
+                type='text'
+                inputMode='numeric'
+                pattern='[0-9]*'
                 className={`form-input ${errorEdad ? 'input-error' : ''}`}
                 placeholder='Edad'
-                min={0}
-                max={120}
                 value={visitante.edad}
-                onChange={(e) => onChange(index, 'edad', e.target.value)}
+                onChange={(e) => onChange(index, 'edad', e.target.value.replace(/\D/g, ''))}
+                autoComplete='off'
               />
               {visitante.edad === '0' && (
                 <p className='age-note'>👶 Menor de 1 año</p>

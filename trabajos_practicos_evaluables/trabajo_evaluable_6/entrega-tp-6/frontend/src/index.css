@@ -1400,6 +1400,24 @@ svg {
   animation: slideDown 0.2s ease;
 }
 
+/* ── Email autocompletado (solo lectura) ── */
+.input-readonly {
+  background: rgba(106, 153, 78, 0.08);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+}
+
+.input-readonly:focus {
+  border-color: rgba(106, 153, 78, 0.35);
+  box-shadow: none;
+}
+
+.email-note {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
 /* ── Resumen de ahorro ── */
 .purchase-summary__right {
   display: flex;
