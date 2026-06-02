@@ -21,9 +21,9 @@ app.use(express.json())
 
 // POST /api/registro
 app.post('/api/registro', (req, res) => {
-  const { nombre, password } = req.body
+  const { nombre, email, password } = req.body
   try {
-    const usuario = registrarUsuario(nombre, password)
+    const usuario = registrarUsuario(nombre, email, password)
     return res.status(201).json({ ok: true, usuario })
   } catch (err) {
     return res.status(400).json({ ok: false, error: err.message })

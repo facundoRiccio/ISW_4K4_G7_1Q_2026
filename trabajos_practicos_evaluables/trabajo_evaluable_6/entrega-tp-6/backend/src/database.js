@@ -21,6 +21,11 @@ export const obtenerUsuarioPorNombre = (nombre) => {
   return usuarios.find(u => u.nombre.toLowerCase() === nombre.toLowerCase()) || null
 }
 
+export const obtenerUsuarioPorEmail = (email) => {
+  const usuarios = leerUsuarios()
+  return usuarios.find(u => (u.email || '').toLowerCase() === email.toLowerCase()) || null
+}
+
 export const guardarUsuario = (datos) => {
   const usuarios = leerUsuarios()
   const nuevoId = Math.max(...usuarios.map(u => u.id)) + 1

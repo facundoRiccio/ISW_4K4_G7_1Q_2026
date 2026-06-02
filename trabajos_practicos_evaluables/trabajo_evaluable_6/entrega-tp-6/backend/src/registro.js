@@ -1,8 +1,18 @@
-import { obtenerUsuarioPorNombre, guardarUsuario } from './database.js'
+import { obtenerUsuarioPorNombre, obtenerUsuarioPorEmail, guardarUsuario } from './database.js'
 
-export const registrarUsuario = (nombre, password) => {
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+export const registrarUsuario = (nombre, email, password) => {
   if (!nombre || typeof nombre !== 'string' || nombre.trim() === '') {
     throw new Error('El nombre de usuario es obligatorio')
+  }
+
+  if (!email || typeof email !== 'string' || email.trim() === '') {
+    throw new Error('El email es obligatorio')
+  }
+
+  if (!EMAIL_REGEX.test(email.trim())) {
+    throw new Error('El email no tiene un formato válido')
   }
 
   if (!password || typeof password !== 'string' || password.trim() === '') {
@@ -14,12 +24,20 @@ export const registrarUsuario = (nombre, password) => {
   }
 
   const usuarioExistente = obtenerUsuarioPorNombre(nombre.trim())
-
   if (usuarioExistente) {
     throw new Error('El nombre de usuario ya está en uso')
   }
 
-  const nuevoUsuario = guardarUsuario({ nombre: nombre.trim(), password })
+  const emailExistente = obtenerUsuarioPorEmail(email.trim())
+  if (emailExistente) {
+    throw new Error('El email ya está registrado')
+  }
 
-  return { id: nuevoUsuario.id, nombre: nuevoUsuario.nombre }
+  const nuevoUsuario = guardarUsuario({
+    nombre: nombre.trim(),
+    email: email.trim().toLowerCase(),
+    password
+  })
+
+  return { id: nuevoUsuario.id, nombre: nuevoUsuario.nombre, email: nuevoUsuario.email }
 }
