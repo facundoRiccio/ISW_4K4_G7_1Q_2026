@@ -9,7 +9,7 @@ const ACTIVIDADES = [
 const Actividades = () => (
   <section className='actividades' aria-label='Actividades del parque'>
     <div className='actividades__divider' aria-hidden='true'><span>🌿</span></div>
-    <h2 className='actividades__title'>🎢 Actividades del parque</h2>
+    <h2 className='actividades__title'>Actividades del parque</h2>
     <p className='actividades__subtitle'>Sumá experiencias de una hora a tu visita</p>
 
     <div className='actividades__grid'>
