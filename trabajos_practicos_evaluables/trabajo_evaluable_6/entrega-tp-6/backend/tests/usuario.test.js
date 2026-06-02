@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest'
 import { validarUsuarioRegistrado } from '../src/usuario.js'
 
 describe('validarUsuarioRegistrado', () => {
-
   it('debería lanzar un error si el ID de usuario no es un número', () => {
     expect(() => validarUsuarioRegistrado(NaN)).toThrow('El ID de usuario debe ser un número')
   })

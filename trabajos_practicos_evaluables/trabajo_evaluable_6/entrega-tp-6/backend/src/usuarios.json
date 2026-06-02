@@ -22,5 +22,11 @@
     "nombre": "Pachu",
     "email": "pachu@ecoharmony.com",
     "password": "2026"
+  },
+  {
+    "id": 302,
+    "nombre": "carlo",
+    "email": "carlo@email.com",
+    "password": "carlo"
   }
 ]

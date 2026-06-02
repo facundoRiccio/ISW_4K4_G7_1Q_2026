@@ -13,7 +13,6 @@ vi.mock('../src/database.js', () => ({
 }))
 
 describe('validarLogin', () => {
-
   it('debería retornar el usuario si el nombre y contraseña son correctos', () => {
     const resultado = validarLogin('Joaquín', '1234')
     expect(resultado).toEqual({ id: 100, nombre: 'Joaquín', email: 'joaquin@ecoharmony.com' })
@@ -39,5 +38,4 @@ describe('validarLogin', () => {
     const resultado = validarLogin('JOAQUÍN', '1234')
     expect(resultado).toEqual({ id: 100, nombre: 'Joaquín', email: 'joaquin@ecoharmony.com' })
   })
-
 })

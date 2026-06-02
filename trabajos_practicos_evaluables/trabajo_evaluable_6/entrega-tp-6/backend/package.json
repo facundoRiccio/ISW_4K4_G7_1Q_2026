@@ -19,8 +19,10 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "esbuild": "^0.28.0",
     "standard": "^17.1.0",
-    "vitest": "^1.6.0"
+    "vite": "^8.0.16",
+    "vitest": "^4.1.8"
   },
   "standard": {
     "env": [
