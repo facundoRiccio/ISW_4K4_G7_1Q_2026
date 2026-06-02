@@ -2,21 +2,25 @@
   {
     "id": 100,
     "nombre": "Joaquín",
+    "email": "joaquin@ecoharmony.com",
     "password": "1234"
   },
   {
     "id": 200,
     "nombre": "Lucía",
+    "email": "lucia@ecoharmony.com",
     "password": "1234"
   },
   {
     "id": 300,
     "nombre": "Mateo",
+    "email": "mateo@ecoharmony.com",
     "password": "1234"
   },
   {
     "id": 301,
     "nombre": "Pachu",
+    "email": "pachu@ecoharmony.com",
     "password": "2026"
   }
 ]
