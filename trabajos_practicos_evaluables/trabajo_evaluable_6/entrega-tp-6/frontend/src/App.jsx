@@ -4,6 +4,9 @@ import RegistroForm from './components/RegistroForm'
 import TicketForm from './components/TicketForm'
 import ResumenCompra from './components/ResumenCompra'
 import MercadoPagoRedirect from './components/MercadoPagoRedirect'
+import InfoPanel from './components/InfoPanel'
+import ParkBackdrop from './components/ParkBackdrop'
+import Actividades from './components/Actividades'
 
 const SESSION_DURACION_MS = 30 * 60 * 1000 // 30 minutos
 
@@ -90,6 +93,8 @@ const App = () => {
 
   return (
     <>
+      <ParkBackdrop />
+
       <header className="site-header" role="banner">
         <span className="site-header__logo" aria-hidden="true">🌿</span>
         <div style={{ flex: 1 }}>
@@ -106,7 +111,7 @@ const App = () => {
         )}
       </header>
 
-      <main className="main-content" id="main" role="main">
+      <main className={`main-content${vista === 'form' ? ' main-content--wide' : ''}`} id="main" role="main">
         {vista === 'login' && (
           <>
             <h2 className="section-title">Bienvenido</h2>
@@ -125,9 +130,15 @@ const App = () => {
 
         {vista === 'form' && (
           <>
-            <h2 className="section-title">Comprar Entradas</h2>
-            <p className="section-subtitle">Completá el formulario y asegurá tu visita al parque</p>
-            <TicketForm onExito={handleExito} usuarioLogueado={usuarioLogueado} />
+            <div className="form-with-sidebar">
+              <div className="form-with-sidebar__main">
+                <h2 className="section-title">Comprar Entradas</h2>
+                <p className="section-subtitle">Completá el formulario y asegurá tu visita al parque</p>
+                <TicketForm onExito={handleExito} usuarioLogueado={usuarioLogueado} />
+              </div>
+              <InfoPanel />
+            </div>
+            <Actividades />
           </>
         )}
 
@@ -145,7 +156,7 @@ const App = () => {
       </main>
 
       <footer className="site-footer" role="contentinfo">
-        <p>© 2026 EcoHarmony Park — Grupo 4K4 · ISW</p>
+        <p>© 2026 EcoHarmony Park — Grupo 7 4K4 · ISW</p>
       </footer>
     </>
   )
