@@ -21,6 +21,7 @@
   --color-text-secondary: #4a6741;
   --color-text-muted: #7a8c6e;
 
+
   /* Tipografía */
   --font-family: 'Lato', sans-serif;
   --font-size-sm: 0.875rem;
@@ -668,12 +669,12 @@ svg {
 }
 
 .resumen-comprobante__key {
-  background: #93db61;
+  background: #a7c957;
   font-weight: 800;
 }
 
 .resumen-comprobante__value {
-  background: #e4f8c9;
+  background: #f2e8cf;
   font-weight: 600;
 }
 
@@ -689,9 +690,9 @@ svg {
 }
 
 .resumen-comprobante__detalle-lista {
-  border: 1px solid #8cd65f;
+  border: 1px solid #6a994e;
   border-radius: 8px;
-  background: #e7f6d4;
+  background: #f2e8cf;
   padding: var(--space-4) var(--space-5);
 }
 

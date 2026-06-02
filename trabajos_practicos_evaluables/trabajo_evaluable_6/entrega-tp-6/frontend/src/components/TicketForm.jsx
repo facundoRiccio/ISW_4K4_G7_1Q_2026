@@ -275,7 +275,7 @@ const TicketForm = ({ onExito, usuarioLogueado }) => {
                   </div>
 
                   <div className="visitante-card__price">
-                    <span className="visitante-card__price-label">Precio final</span>
+                    <span className="visitante-card__price-label">Precio unitario</span>
                     <strong className="visitante-card__price-value">
                       {precioCalculado === null ? '—' : formatearPrecio(precioCalculado)}
                     </strong>
@@ -286,7 +286,7 @@ const TicketForm = ({ onExito, usuarioLogueado }) => {
           </div>
 
           <div className="purchase-summary">
-            <span className="purchase-summary__label">Total estimado</span>
+            <span className="purchase-summary__label">Precio total</span>
             <strong className="purchase-summary__value">{formatearPrecio(totalEstimado)}</strong>
           </div>
         </div>

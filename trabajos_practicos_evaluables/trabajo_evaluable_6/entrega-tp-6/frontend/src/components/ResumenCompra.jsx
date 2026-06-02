@@ -12,7 +12,23 @@ const ResumenCompra = ({ resumen, onVolver }) => {
       </div>
 
       <div className="resumen-comprobante__body">
-        <div className="resumen-card__check" aria-hidden="true">✅</div>
+        <div
+          style={{
+            width: '72px',
+            height: '72px',
+            background: 'linear-gradient(135deg, #6A994E, #386641)',
+            borderRadius: '50%',
+            margin: '0 auto 20px',
+            display: 'inline-block',
+            lineHeight: '72px',
+            textAlign: 'center',
+            color: 'white',
+            fontSize: '32px',
+            boxShadow: '0 4px 20px rgba(56, 102, 65, 0.3)'
+          }}
+        >
+          ✓
+        </div>
         <h2 className="resumen-card__title">¡Compra Confirmada!</h2>
         <p className="resumen-card__msg resumen-card__msg--centered">
           {resumen.mensajeIntroduccion}
