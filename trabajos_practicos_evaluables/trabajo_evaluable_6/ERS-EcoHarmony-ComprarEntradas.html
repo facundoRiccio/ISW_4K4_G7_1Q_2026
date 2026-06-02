@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ERS — EcoHarmony Park — Módulo Comprar Entradas</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cazador:#386641; --helecho:#6a994e; --esparrago:#a7c957;
+    --crema:#f2e8cf; --terracota:#bc4749; --tinta:#23311f; --gris:#5b6b54;
+  }
+  *{box-sizing:border-box;}
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{
+    font-family:'Lato',Arial,sans-serif; color:var(--tinta);
+    margin:0; line-height:1.55; font-size:11.5pt;
+  }
+  .doc{ max-width:820px; margin:0 auto; padding:32px; }
+
+  /* ===== Portada ===== */
+  .cover{
+    min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center;
+    page-break-after:always; padding:40px 24px;
+  }
+  .cover__kicker{ letter-spacing:.28em; text-transform:uppercase; color:var(--helecho); font-weight:700; font-size:11pt; margin-top:18px;}
+  .cover__title{ font-size:30pt; font-weight:900; color:var(--cazador); margin:8px 0 2px; line-height:1.1;}
+  .cover__sub{ font-size:15pt; color:var(--gris); font-weight:400; margin-bottom:26px;}
+  .cover__box{ border:1.5px solid var(--esparrago); border-radius:14px; padding:18px 26px; background:rgba(167,201,87,.10); min-width:60%;}
+  .cover__box p{ margin:4px 0; }
+  .cover__foot{ margin-top:34px; color:var(--gris); font-size:10pt;}
+
+  /* ===== Tipografía de secciones ===== */
+  h1.sec{ font-size:18pt; color:var(--cazador); font-weight:900; border-bottom:3px solid var(--esparrago);
+    padding-bottom:6px; margin:34px 0 14px; }
+  h2.sub{ font-size:13.5pt; color:var(--helecho); font-weight:900; margin:22px 0 8px;}
+  h3.subsub{ font-size:12pt; color:var(--cazador); font-weight:700; margin:16px 0 6px;}
+  p{ margin:8px 0; text-align:justify;}
+  ul,ol{ margin:8px 0 8px 4px; padding-left:22px;}
+  li{ margin:4px 0;}
+  .muted{ color:var(--gris); }
+  code{ background:rgba(56,102,65,.08); padding:1px 5px; border-radius:4px; font-size:.92em;}
+
+  /* ===== Tablas ===== */
+  table{ width:100%; border-collapse:collapse; margin:12px 0; font-size:10.5pt;}
+  th,td{ border:1px solid #cdd8c2; padding:7px 9px; text-align:left; vertical-align:top;}
+  th{ background:var(--cazador); color:var(--crema); font-weight:700;}
+  tr:nth-child(even) td{ background:rgba(167,201,87,.10);}
+  td.id{ font-weight:700; color:var(--cazador); white-space:nowrap; width:84px;}
+
+  /* ===== Índice ===== */
+  .toc{ border:1.5px solid var(--esparrago); border-radius:12px; padding:16px 22px; background:rgba(242,232,207,.4);}
+  .toc h2{ margin-top:0; color:var(--cazador);}
+  .toc ol{ list-style:none; padding-left:0; counter-reset:itoc;}
+  .toc > ol > li{ font-weight:700; margin:6px 0;}
+  .toc ol ol{ font-weight:400; padding-left:18px; margin:2px 0;}
+
+  /* ===== Cajas destacadas ===== */
+  .callout{ border-left:4px solid var(--helecho); background:rgba(106,153,78,.08);
+    padding:10px 14px; border-radius:0 8px 8px 0; margin:12px 0;}
+  .us{ border:2px solid var(--esparrago); border-radius:12px; padding:16px 20px; background:rgba(167,201,87,.10); margin:14px 0;}
+  .us h3{ margin-top:0;}
+  .anexo-dialogo p{ margin:7px 0; }
+  .anexo-dialogo b{ color:var(--cazador); }
+
+  .page-break{ page-break-before:always; }
+  @page{ size:A4; margin:1.8cm; }
+  @media print{ .doc{ max-width:none; padding:0;} a{ color:inherit; text-decoration:none;} }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- ====================== PORTADA ====================== -->
+  <section class="cover">
+    <svg width="120" height="120" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Logo EcoHarmony Park">
+      <circle cx="100" cy="100" r="98" fill="#2f5436"/>
+      <circle cx="100" cy="100" r="93" fill="#386641" stroke="#A7C957" stroke-width="3"/>
+      <clipPath id="ep"><circle cx="100" cy="100" r="74"/></clipPath>
+      <g clip-path="url(#ep)">
+        <rect x="20" y="20" width="160" height="160" fill="#d4ebc4"/>
+        <circle cx="138" cy="58" r="16" fill="#f2c94c"/>
+        <polygon points="30,156 78,82 120,156" fill="#7fae5e"/>
+        <polygon points="96,156 142,76 188,156" fill="#4f7a3a"/>
+        <rect x="20" y="150" width="160" height="40" fill="#5f8f43"/>
+        <rect x="95" y="124" width="8" height="26" rx="1.5" fill="#6b4a2b"/>
+        <polygon points="100,84 79,122 121,122" fill="#386641"/>
+        <polygon points="100,99 77,133 123,133" fill="#4f7a3a"/>
+        <polygon points="100,114 81,145 119,145" fill="#6A994E"/>
+      </g>
+      <circle cx="100" cy="100" r="74" fill="none" stroke="#386641" stroke-width="3"/>
+    </svg>
+    <div class="cover__kicker">Especificación de Requerimientos de Software</div>
+    <div class="cover__title">EcoHarmony Park</div>
+    <div class="cover__sub">Módulo «Comprar Entradas»</div>
+
+    <div class="cover__box">
+      <p><b>Universidad Tecnológica Nacional — Facultad Regional Córdoba</b></p>
+      <p>Ingeniería y Calidad de Software — 2026</p>
+      <p>Curso: <b>4K4</b> · Grupo: <b>N.º 7</b></p>
+      <p class="muted">Documento basado en el estándar IEEE 830</p>
+    </div>
+
+    <div class="cover__foot">Versión 1.0 — Fecha: 02/06/2026</div>
+  </section>
+
+  <!-- ====================== HISTORIAL ====================== -->
+  <h1 class="sec">Historial de revisiones</h1>
+  <table>
+    <thead><tr><th style="width:70px">Versión</th><th style="width:110px">Fecha</th><th>Descripción</th><th style="width:150px">Autor(es)</th></tr></thead>
+    <tbody>
+      <tr><td>1.0</td><td>02/06/2026</td><td>Versión inicial de la ERS — módulo Comprar Entradas.</td><td>Grupo 7</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ====================== ÍNDICE ====================== -->
+  <div class="toc">
+    <h2>Índice</h2>
+    <ol>
+      <li>1. Introducción
+        <ol>
+          <li>1.1 Propósito</li>
+          <li>1.2 Alcance del producto</li>
+          <li>1.3 Definiciones, acrónimos y abreviaturas</li>
+          <li>1.4 Referencias</li>
+          <li>1.5 Visión general del documento</li>
+        </ol>
+      </li>
+      <li>2. Descripción general
+        <ol>
+          <li>2.1 Perspectiva del producto</li>
+          <li>2.2 Funciones del producto</li>
+          <li>2.3 Características de los usuarios</li>
+          <li>2.4 Restricciones</li>
+          <li>2.5 Suposiciones y dependencias</li>
+        </ol>
+      </li>
+      <li>3. Requisitos específicos
+        <ol>
+          <li>3.1 Historia de usuario: Comprar Entradas</li>
+          <li>3.2 Requisitos funcionales</li>
+          <li>3.3 Reglas de negocio</li>
+          <li>3.4 Requisitos no funcionales</li>
+          <li>3.5 Interfaces externas</li>
+          <li>3.6 Criterios de aceptación</li>
+        </ol>
+      </li>
+      <li>4. Anexos
+        <ol>
+          <li>Anexo A — Entrevista con el propietario (relevamiento del dominio)</li>
+          <li>Anexo B — Relevamiento con los Product Owners (cátedra)</li>
+        </ol>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ====================== 1. INTRODUCCIÓN ====================== -->
+  <div class="page-break"></div>
+  <h1 class="sec">1. Introducción</h1>
+
+  <h2 class="sub">1.1 Propósito</h2>
+  <p>El presente documento tiene como objetivo especificar de manera completa y no ambigua los requerimientos del
+  módulo <b>«Comprar Entradas»</b> del sistema de <b>EcoHarmony Park</b>. Está dirigido al equipo de desarrollo (Grupo 7),
+  a los Product Owners de la cátedra y a los docentes evaluadores, sirviendo como acuerdo base sobre las funcionalidades
+  a construir, las reglas de negocio aplicables y los criterios de aceptación que permitirán validar el producto.</p>
+
+  <h2 class="sub">1.2 Alcance del producto</h2>
+  <p><b>EcoHarmony Park</b> es un bioparque que impulsa el desarrollo de una aplicación para mejorar la experiencia de
+  sus visitantes. La aplicación contempla, en su visión global: mapas interactivos del parque, consulta de horarios de
+  alimentación de los animales, inscripción a actividades y la autogestión de la compra de entradas con pago electrónico.</p>
+  <p>Esta ERS se centra <b>específicamente en el módulo «Comprar Entradas»</b>, que permite a un visitante registrado
+  adquirir entradas para asegurar su visita, calculando las tarifas según el tipo de pase y la edad, validando la
+  disponibilidad de fechas y <b>simulando</b> las integraciones de pago (Mercado Pago) y de notificación por correo
+  mediante componentes de la interfaz. Los demás módulos se describen únicamente como contexto (sección 2.2).</p>
+
+  <h2 class="sub">1.3 Definiciones, acrónimos y abreviaturas</h2>
+  <table>
+    <thead><tr><th style="width:160px">Término</th><th>Definición</th></tr></thead>
+    <tbody>
+      <tr><td>ERS</td><td>Especificación de Requerimientos de Software.</td></tr>
+      <tr><td>Visitante</td><td>Usuario final que utiliza la aplicación para comprar entradas y acceder al parque.</td></tr>
+      <tr><td>Pase Regular</td><td>Entrada estándar al parque.</td></tr>
+      <tr><td>Pase VIP</td><td>Entrada con beneficios adicionales y mayor costo.</td></tr>
+      <tr><td>PO</td><td>Product Owner. En este trabajo, los docentes que actúan como dueños del producto.</td></tr>
+      <tr><td>SM</td><td>Scrum Master.</td></tr>
+      <tr><td>RF / RNF / RN</td><td>Requisito Funcional / Requisito No Funcional / Regla de Negocio.</td></tr>
+      <tr><td>MP</td><td>Mercado Pago (pasarela de pago, simulada en este alcance).</td></tr>
+      <tr><td>TDD</td><td>Test-Driven Development (desarrollo guiado por pruebas).</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sub">1.4 Referencias</h2>
+  <ul>
+    <li>EcoHarmony Park — Descripción del dominio y entrevista con el propietario (ver <b>Anexo A</b>).</li>
+    <li>Relevamiento con los Product Owners de la cátedra (ver <b>Anexo B</b>).</li>
+    <li>Estándar <b>IEEE 830</b> — Recommended Practice for Software Requirements Specifications.</li>
+    <li>Paleta de colores institucional: <code>https://coolors.co/palette/386641-6a994e-a7c957-f2e8cf-bc4749</code></li>
+  </ul>
+
+  <h2 class="sub">1.5 Visión general del documento</h2>
+  <p>La sección 2 presenta una descripción general del producto, sus usuarios y restricciones. La sección 3 detalla los
+  requisitos específicos del módulo Comprar Entradas (historia de usuario, requisitos funcionales y no funcionales,
+  reglas de negocio, interfaces externas y criterios de aceptación). Finalmente, los anexos transcriben los relevamientos
+  que dieron origen a estos requisitos.</p>
+
+  <!-- ====================== 2. DESCRIPCIÓN GENERAL ====================== -->
+  <div class="page-break"></div>
+  <h1 class="sec">2. Descripción general</h1>
+
+  <h2 class="sub">2.1 Perspectiva del producto</h2>
+  <p>El módulo Comprar Entradas forma parte de la aplicación de EcoHarmony Park y opera de manera integrada con la
+  gestión de cuentas de usuario (registro e inicio de sesión). En el alcance actual, las integraciones externas
+  —pasarela de pago Mercado Pago y servicio de envío de correo— se <b>simulan</b> mediante componentes de interfaz
+  (modales), de modo de reflejar el comportamiento esperado sin realizar transacciones ni envíos reales.</p>
+
+  <h2 class="sub">2.2 Funciones del producto</h2>
+  <p>A modo de contexto, la aplicación de EcoHarmony Park prevé las siguientes funciones (las marcadas con ★
+  corresponden al alcance detallado de esta ERS):</p>
+  <ul>
+    <li>★ <b>Registro e inicio de sesión</b> del visitante (mail y contraseña).</li>
+    <li>★ <b>Compra de entradas</b> con cálculo de tarifas, validación de fechas y selección de forma de pago.</li>
+    <li>Consulta de <b>horarios de alimentación</b> de los animales.</li>
+    <li><b>Mapa interactivo</b> del parque con sectores e íconos informativos.</li>
+    <li><b>Inscripción a actividades</b> (Tirolesa, Safari, Palestra, Jardinería).</li>
+  </ul>
+
+  <h2 class="sub">2.3 Características de los usuarios</h2>
+  <table>
+    <thead><tr><th style="width:170px">Usuario</th><th>Descripción</th></tr></thead>
+    <tbody>
+      <tr><td>Visitante registrado</td><td>Persona que se registra con mail y contraseña, inicia sesión y compra entradas. Es el actor principal del módulo.</td></tr>
+      <tr><td>Administrador</td><td>Personal del parque que mantiene actualizada la información (horarios, actividades, etc.). Gestiona estas tareas <b>por fuera</b> de la aplicación; no interviene en el módulo Comprar Entradas.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sub">2.4 Restricciones</h2>
+  <ul>
+    <li>El parque abre <b>todos los días excepto los lunes</b> y los feriados <b>25 de diciembre</b> y <b>1 de enero</b>.</li>
+    <li>La fecha de visita seleccionada debe ser <b>el día actual o una fecha futura</b>.</li>
+    <li>La cantidad de entradas por compra <b>no puede superar 10</b>.</li>
+    <li>El diseño debe utilizar la fuente <b>Lato</b> y la <b>paleta de colores</b> institucional provista (Coolors).</li>
+    <li>El frontend debe incluir un <b>logo</b> diseñado por el grupo que contenga, de forma obligatoria, el <b>número de grupo</b>.</li>
+    <li>Las integraciones con Mercado Pago y con el servicio de correo se <b>simulan</b> mediante modales.</li>
+  </ul>
+
+  <h2 class="sub">2.5 Suposiciones y dependencias</h2>
+  <ul>
+    <li>El visitante posee una cuenta registrada antes de iniciar la compra.</li>
+    <li>Los datos administrativos del parque (precios, días de apertura, etc.) se asumen vigentes y son provistos por la cátedra.</li>
+    <li>Las simulaciones de pago y de correo no dependen de servicios externos en producción.</li>
+  </ul>
+
+  <!-- ====================== 3. REQUISITOS ESPECÍFICOS ====================== -->
+  <div class="page-break"></div>
+  <h1 class="sec">3. Requisitos específicos</h1>
+
+  <h2 class="sub">3.1 Historia de usuario: Comprar Entradas</h2>
+  <div class="us">
+    <h3>HU-01 — Comprar Entradas</h3>
+    <p><b>Como</b> visitante registrado<br/>
+    <b>quiero</b> comprar entradas indicando la fecha de visita, la cantidad y los datos de cada visitante, y eligiendo la forma de pago<br/>
+    <b>para</b> asegurar mi visita al parque y recibir la confirmación correspondiente por correo.</p>
+  </div>
+
+  <h2 class="sub">3.2 Requisitos funcionales</h2>
+  <table>
+    <thead><tr><th class="id">ID</th><th>Requisito</th></tr></thead>
+    <tbody>
+      <tr><td class="id">RF-01</td><td>El sistema debe permitir comprar entradas únicamente a un <b>visitante registrado e identificado</b> (con sesión iniciada mediante mail y contraseña).</td></tr>
+      <tr><td class="id">RF-02</td><td>El sistema debe permitir <b>seleccionar la fecha de visita</b> mediante un calendario. Los días en que el parque permanece cerrado (lunes, 25/12 y 1/1) deben mostrarse <b>deshabilitados o no seleccionables</b>.</td></tr>
+      <tr><td class="id">RF-03</td><td>El sistema debe impedir la selección de <b>fechas pasadas</b>: la fecha elegida debe ser el día actual o una fecha futura.</td></tr>
+      <tr><td class="id">RF-04</td><td>El sistema debe permitir ingresar la <b>cantidad de entradas</b> a comprar. Debe aceptar únicamente <b>números enteros positivos</b> entre <b>1 y 10</b>.</td></tr>
+      <tr><td class="id">RF-05</td><td>El sistema debe permitir indicar, por cada entrada, la <b>edad del visitante</b> (número entero) y el <b>tipo de pase</b> (Regular o VIP).</td></tr>
+      <tr><td class="id">RF-06</td><td>El sistema debe <b>calcular la tarifa</b> de cada entrada en función del tipo de pase y de la edad, aplicando los descuentos correspondientes (ver Reglas de Negocio).</td></tr>
+      <tr><td class="id">RF-07</td><td>El sistema debe <b>mostrar el monto total</b> a abonar antes de confirmar la compra.</td></tr>
+      <tr><td class="id">RF-08</td><td>El sistema debe permitir <b>seleccionar la forma de pago</b>: <b>Efectivo</b> (pago en boletería) o <b>Tarjeta</b> (vía Mercado Pago).</td></tr>
+      <tr><td class="id">RF-09</td><td>Ante el pago con <b>Tarjeta</b>, el sistema debe <b>simular la pasarela de Mercado Pago mediante un modal</b> con una interfaz similar a la real, que refleje la transacción realizada.</td></tr>
+      <tr><td class="id">RF-10</td><td>Al confirmar la compra, el sistema debe <b>simular el envío del correo de confirmación mediante un modal</b> con apariencia de un correo, cuyo cuerpo contenga datos representativos de la transacción (p. ej., fecha de visita y cantidad de pases).</td></tr>
+      <tr><td class="id">RF-11</td><td>El sistema debe mostrar un <b>comprobante / resumen</b> de la compra realizada (fecha, cantidad, detalle por entrada, monto total y forma de pago).</td></tr>
+      <tr><td class="id">RF-12</td><td>El sistema debe <b>validar todos los datos</b> ingresados (formato de correo, fecha, cantidad, edad y forma de pago) y mostrar mensajes de error claros cuando corresponda.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sub">3.3 Reglas de negocio</h2>
+  <table>
+    <thead><tr><th class="id">ID</th><th>Regla</th></tr></thead>
+    <tbody>
+      <tr><td class="id">RN-01</td><td><b>Precios base:</b> Pase Regular = <b>$10.000</b>; Pase VIP = <b>$20.000</b>.</td></tr>
+      <tr><td class="id">RN-02</td><td><b>Descuentos por edad</b> (sobre el precio del pase):
+        <ul>
+          <li>Visitantes de <b>3 años o menos</b>: <b>sin cargo</b> (100% de descuento).</li>
+          <li>Visitantes de <b>15 años o menos</b>: <b>50% de descuento</b>.</li>
+          <li>Visitantes de <b>60 años o más</b>: <b>50% de descuento</b>.</li>
+        </ul>
+      </td></tr>
+      <tr><td class="id">RN-03</td><td><b>Días de apertura:</b> el parque abre todos los días <b>excepto los lunes</b> y los feriados <b>25/12</b> y <b>1/1</b>.</td></tr>
+      <tr><td class="id">RN-04</td><td><b>Fecha válida:</b> la fecha de visita debe ser el día actual o una fecha futura.</td></tr>
+      <tr><td class="id">RN-05</td><td><b>Cantidad de entradas:</b> mínimo 1, máximo 10 por compra.</td></tr>
+      <tr><td class="id">RN-06</td><td><b>Edad:</b> no existe límite ni restricción específica de edad por entrada para realizar la compra.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><b>Nota sobre descuentos:</b> de acuerdo con las reglas anteriores, un visitante de 60 años o más con pase Regular abona $5.000, y con pase VIP abona $10.000; un menor o igual a 15 años obtiene el mismo 50%, y los de 3 años o menos no abonan.</div>
+
+  <h2 class="sub">3.4 Requisitos no funcionales</h2>
+  <table>
+    <thead><tr><th class="id">ID</th><th>Requisito</th></tr></thead>
+    <tbody>
+      <tr><td class="id">RNF-01</td><td><b>Tipografía:</b> el módulo debe utilizar la fuente <b>Lato</b>.</td></tr>
+      <tr><td class="id">RNF-02</td><td><b>Paleta de colores:</b> debe emplearse la paleta institucional provista: <code>#386641</code>, <code>#6a994e</code>, <code>#a7c957</code>, <code>#f2e8cf</code>, <code>#bc4749</code>.</td></tr>
+      <tr><td class="id">RNF-03</td><td><b>Identidad de marca:</b> el frontend debe incluir un <b>logo diseñado por el grupo</b> que contenga el <b>número de grupo (G7)</b> de forma visible.</td></tr>
+      <tr><td class="id">RNF-04</td><td><b>Usabilidad:</b> las validaciones deben brindar <b>feedback inmediato</b> y mensajes comprensibles; la interfaz debe ser clara y <b>responsive</b>.</td></tr>
+      <tr><td class="id">RNF-05</td><td><b>Simulaciones por interfaz:</b> el pago con tarjeta y el envío de correo se resuelven con <b>modales</b> representativos, sin servicios externos productivos.</td></tr>
+      <tr><td class="id">RNF-06</td><td><b>Calidad / proceso:</b> la lógica del módulo se desarrolla bajo <b>TDD</b> (ciclo Red-Green-Refactor), con validación de datos como defensa en profundidad (frontend y backend).</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sub">3.5 Interfaces externas (simuladas)</h2>
+  <table>
+    <thead><tr><th style="width:160px">Interfaz</th><th>Descripción</th></tr></thead>
+    <tbody>
+      <tr><td>Mercado Pago</td><td>Pasarela de pago para la opción Tarjeta. Se simula con un <b>modal con apariencia similar a Mercado Pago</b> que refleja la transacción.</td></tr>
+      <tr><td>Servicio de correo</td><td>Envío del comprobante de compra. Se simula con un <b>modal con apariencia de correo</b> que muestra datos representativos de la transacción (fecha, cantidad de pases, etc.).</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sub">3.6 Criterios de aceptación</h2>
+  <ul>
+    <li>No es posible iniciar una compra sin haber iniciado sesión como visitante registrado.</li>
+    <li>El calendario no permite seleccionar lunes, 25/12, 1/1 ni fechas pasadas.</li>
+    <li>El campo de cantidad solo admite enteros entre 1 y 10 (sin comas, puntos ni signos).</li>
+    <li>El total se calcula correctamente aplicando precios base y descuentos por edad.</li>
+    <li>Al pagar con tarjeta se muestra el modal tipo Mercado Pago reflejando la transacción.</li>
+    <li>Al confirmar, se muestra el modal de correo con datos representativos y el comprobante de la compra.</li>
+    <li>Los datos inválidos producen mensajes de error claros y no permiten avanzar.</li>
+  </ul>
+
+  <!-- ====================== 4. ANEXOS ====================== -->
+  <div class="page-break"></div>
+  <h1 class="sec">4. Anexos</h1>
+
+  <h2 class="sub">Anexo A — Entrevista con el propietario (relevamiento del dominio)</h2>
+  <p class="muted">Transcripción de la entrevista a Miguel Rodríguez, propietario de EcoHarmony Park, fuente del relevamiento del dominio.</p>
+  <div class="anexo-dialogo">
+    <p><b>El Doce:</b> ¡Hola! Estoy aquí en el hermoso bioparque "EcoHarmony Park" con el Sr. Rodríguez, para hablar sobre una emocionante novedad: ¡una nueva aplicación móvil que mejorará la experiencia de los visitantes aquí en el parque! ¿Me podrías contar brevemente en qué consiste la aplicación?</p>
+    <p><b>Miguel:</b> ¡Hola! Gracias por tomarte el tiempo para hablar conmigo. Estoy encantado de compartir más detalles sobre la idea de nuestra aplicación. En primer lugar, ofrecerá a los visitantes mapas interactivos que les ayudarán a explorar el parque de manera más eficiente. Asimismo, proporcionará información detallada sobre cada exhibición y horario de alimentación de cada especie que cuidamos. También se podrá autogestionar la compra de entradas al parque, pudiendo realizar directamente el pago a través de la pasarela de Mercado Pago, lo que permitirá agilizar el ingreso. Por último, los visitantes pueden inscribirse a las diferentes actividades diarias que posee el parque.</p>
+    <p><b>El Doce:</b> Wow! Que interesante ¿Podrías explicarme cómo puede un visitante acceder a los horarios de alimentación a través de la aplicación?</p>
+    <p><b>Miguel:</b> ¡Claro! Una vez que descarguen la aplicación y la abran, encontrarán una sección dedicada a "Horarios de Alimentación disponibles". Cada horario estará detallado de manera clara, indicando la especie, nombre del animal, edad, hora programada, sector del parque (terrestres, acuáticos o aéreos) y cuidador encargado (nombre y apellido). Por otra parte, aquellos que estén próximos a comenzar (faltando una hora) los mostraremos con un mensaje que diga: ¡Apúrate que ya comienza! Es importante considerar que los horarios se mostrarán en orden, comenzando con los más próximos a la fecha actual y extendiéndose hasta una semana en el futuro. Para que sea más amigable la interfaz pensamos en proporcionar la posibilidad de filtrar por la fecha en la que el visitante estará en el parque y que se visualicen únicamente los horarios correspondientes a la misma. Además, en una versión posterior, los visitantes podrán configurar notificaciones para recibir recordatorios de los horarios de alimentación que deseen seguir de cerca.</p>
+    <p><b>El Doce:</b> ¡Eso suena muy útil! ¡Al igual que el mapa interactivo! ¿Podrías comentarme cuáles serán los elementos y características del parque que estarán disponibles para visualizar en él? ¿Qué acciones podrán llevar a cabo los visitantes a través de esta herramienta?</p>
+    <p><b>Miguel:</b> Este mapa ofrece una vista panorámica de todo el parque, dividido en sectores diferenciados por colores. Asimismo, el mapa contiene íconos informativos: "Inodoro" para identificar los baños distribuidos en el parque, una "Bolsa" para indicar los puntos de venta, y un "Micrófono" para el show especial del día. Los visitantes pueden hacer click en este último icono para obtener el nombre del show y su horario, en caso de que haya un show programado. En una futura mejora pensamos incluir en este mapa la ubicación del visitante en tiempo real.</p>
+    <p><b>El Doce:</b> Para alguien como yo, con un sentido de la orientación no muy desarrollado, suena como una herramienta imprescindible, ¡jaja! ¿Hay otros aspectos del parque que también planean ofrecer a través de la aplicación? ¿Habías mencionado la inscripción a las actividades, no es cierto?</p>
+    <p><b>Miguel:</b> Si! me estaba olvidando de comentarlo. El parque ofrece la posibilidad de realizar actividades de una hora sumamente enriquecedoras para los visitantes, entre las que se encuentran "Tirolesa", "Safari", "Palestra" y "Jardinería". Para poder realizar la inscripción deben seleccionar del conjunto de actividades la que desean realizar, eligiendo en primer lugar el horario y completando luego los datos del visitante: nombre, DNI, edad y talla de vestimenta si la actividad lo demanda. Finalmente, para concluir el proceso de inscripción, pedimos a los visitantes que acepten los términos y condiciones específicos de la actividad en la que participarán. Nos interesa gestionar la inscripción de las actividades porque tienen cupos limitados y es muy útil para planificarlas con anterioridad según los inscriptos que tengamos.</p>
+    <p><b>El Doce:</b> Para finalizar esta pequeña entrevista, ¿Podrías explicarme el proceso de compra de entradas a través de la app?</p>
+    <p><b>Miguel:</b> ¡Pero claro! Para realizar la compra de entradas el visitante debe registrarse en la aplicación, ingresando un mail y una contraseña. A continuación, debe ingresar a la sección "Comprar entradas" y allí indicar la fecha de visita deseada, la cantidad de entradas requeridas (que no puede superar las 10) y la edad de cada visitante. Finalmente, el sistema mostrará el monto total y se debe seleccionar la forma de pago: efectivo en caso de querer pagar en boletería o con tarjeta, donde se redirigirá al usuario a la página de Mercado Pago para completar el proceso de forma segura. Finalmente, recibirán un mensaje de confirmación vía mail y sus entradas serán verificadas al momento de ingresar al parque. La posibilidad de comprar las entradas mediante la aplicación nos parece fundamental para comenzar a probar la recepción de la aplicación, incluyendo el pago electrónico ya que creemos que será el más usado.</p>
+    <p><b>El Doce:</b> ¡Muy claro! Parece que la aplicación requiere mucha atención. ¿Tienen previsto contratar personal adicional para mantener actualizados los horarios, las actividades y todo lo que implica?</p>
+    <p><b>Miguel:</b> No, no hay problema en ese aspecto. Planeamos gestionar esa tarea por fuera de la aplicación, a través de nuestro equipo de administradores, que se encargará de mantener todo actualizado.</p>
+    <p><b>El Doce:</b> Ah, entiendo. ¡Gracias por compartir todos estos emocionantes detalles! Más adelante coordinamos otra nota para ver esta aplicación en funcionamiento.</p>
+  </div>
+
+  <div class="page-break"></div>
+  <h2 class="sub">Anexo B — Relevamiento con los Product Owners (cátedra)</h2>
+  <p class="muted">
+    <b>Producto:</b> Módulo «Comprar Entradas» — EcoHarmony Park.<br/>
+    <b>Product Owners (PO):</b> Constanza Garnero &amp; Juan Salvador Barbera.<br/>
+    <b>Scrum Master (SM):</b> Pablo Gabriel Fernández.
+  </p>
+  <p><b>Objetivo:</b> desarrollar un sistema que permita a un visitante registrado comprar entradas para asegurar su
+  visita al parque, calculando tarifas según el tipo de pase y la edad, validando la disponibilidad de fechas, y
+  simulando las integraciones de pago y notificación por mail mediante componentes de la interfaz.</p>
+  <div class="anexo-dialogo">
+    <p><b>SM:</b> ¿Qué días abre el parque para poder gestionar la selección de fechas en la compra de entradas?</p>
+    <p><b>PO:</b> Todos los días, menos los lunes y los días festivos del 25 de diciembre y 1 de enero.</p>
+    <p><b>SM:</b> ¿Qué se debe mostrar cuando la fecha seleccionada corresponde a un día en que el parque está cerrado?</p>
+    <p><b>PO:</b> Si el campo es un calendario, debería marcar el día como deshabilitado, o no dejar seleccionarlo. La fecha elegida por el visitante siempre debe ser del día actual o futuro.</p>
+    <p><b>SM:</b> ¿Qué paleta de colores y fuentes debemos usar para el diseño de este módulo?</p>
+    <p><b>PO:</b> La fuente debe ser Lato. Para el esquema de colores, utilicen la paleta provista en el siguiente enlace de Coolors: <code>https://coolors.co/palette/386641-6a994e-a7c957-f2e8cf-bc4749</code></p>
+    <p><b>SM:</b> Al redirigir hacia Mercado Pago por pago con tarjeta, ¿podemos simularlo mostrando una pantalla que diga, por ejemplo: "Mercado Pago Compra Exitosa"?</p>
+    <p><b>PO:</b> No, simulen con un modal una interfaz parecida a Mercado Pago, de modo que refleje la transacción realizada.</p>
+    <p><b>SM:</b> Al enviar el mail de confirmación, ¿podemos simularlo mostrando un modal que diga, por ejemplo: "Mail enviado a tu@email.com"?</p>
+    <p><b>PO:</b> Simulen con un modal una interfaz parecida al visualizar un mail y que su cuerpo tenga datos representativos de la transacción (como la fecha y la cantidad de pases).</p>
+    <p><b>SM:</b> ¿Existe algún límite o restricción específico en las edades por cada entrada?</p>
+    <p><b>PO:</b> No.</p>
+    <p><b>SM:</b> ¿Cuál es el precio estipulado para una entrada Regular y otra VIP?</p>
+    <p><b>PO:</b> El pase VIP tiene un costo de $20.000 y el pase Común es de $10.000.</p>
+    <p><b>SM:</b> ¿Existe alguna variación en el precio de la entrada respecto a la edad del visitante?</p>
+    <p><b>PO:</b> Sí, para menores o iguales a 3 años no pagan. Para menores o iguales a 15 años obtienen un 50% off. Finalmente, para mayores o iguales a 60 años también se aplica un 50% off.</p>
+    <p><b>SM:</b> ¿Debemos colocar en el frontend el logo del parque? En caso de sí, ¿cuál es el logo institucional?</p>
+    <p><b>PO:</b> Deben diseñarlo ustedes mismos. El logo debe poseer el número de grupo en alguna parte como requerimiento obligatorio.</p>
+    <p><b>SM:</b> ¿Alguna otra información o aclaración al respecto para el equipo de desarrollo?</p>
+    <p><b>PO:</b> Sí, recuerden que para este tipo de dudas sobre el trabajo práctico y la reducción de incertidumbre no hace falta que copien a la profe Lau. Con que estemos los profesores de la cátedra es suficiente.</p>
+  </div>
+
+</div>
+</body>
+</html>
