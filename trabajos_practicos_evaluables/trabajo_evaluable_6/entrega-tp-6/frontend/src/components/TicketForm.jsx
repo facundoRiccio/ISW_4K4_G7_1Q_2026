@@ -1,30 +1,8 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import ErrorBanner from './ErrorBanner'
-
-// Fecha mínima: hoy en formato yyyy-mm-dd para el input date
-const hoyISO = () => new Date().toISOString().split('T')[0]
-
-const PRECIOS_BASE = {
-  regular: 10000,
-  vip: 20000
-}
-
-const formatearPrecio = (valor) => new Intl.NumberFormat('es-AR', {
-  style: 'currency',
-  currency: 'ARS',
-  maximumFractionDigits: 0
-}).format(valor)
-
-const calcularPrecioConDescuento = (edad, tipoPase) => {
-  const edadNumero = Number(edad)
-  const precioBase = PRECIOS_BASE[tipoPase] ?? 0
-
-  if (!Number.isFinite(edadNumero)) return null
-  if (edadNumero <= 3) return 0
-  if (edadNumero <= 15) return precioBase * 0.5
-  if (edadNumero >= 60) return precioBase * 0.5
-  return precioBase
-}
+import DatePicker from './DatePicker'
+import VisitanteItem from './VisitanteItem'
+import { PRECIOS_BASE, formatearPrecio, calcularPrecioConDescuento } from '../precios'
 
 const crearVisitante = () => ({ edad: '', pase: 'regular' })
 
@@ -43,28 +21,55 @@ const TicketForm = ({ onExito, usuarioLogueado }) => {
   const [error, setError] = useState('')
   const [erroresValidacion, setErroresValidacion] = useState({})
   const [cargando, setCargando] = useState(false)
+  const [visitanteAbierto, setVisitanteAbierto] = useState(0)
 
+  // No necesita useCallback: se pasa a un <input> nativo, no a un componente memoizado.
   const handleCantidadChange = (e) => {
-    const val = e.target.value === '' ? '' : Number(e.target.value)
+    const raw = e.target.value
+    const val = raw === '' ? '' : Number(raw)
     setCantidad(val)
+    setErroresValidacion((prev) => (prev.cantidad ? { ...prev, cantidad: null } : prev))
+
     if (typeof val === 'number' && val > 0 && val <= 10) {
-      setVisitantes((actuales) => Array.from({ length: val }, (_, i) => actuales[i] || crearVisitante()))
+      const oldLen = visitantes.length
+      setVisitantes((prev) => (
+        val === prev.length
+          ? prev
+          : Array.from({ length: val }, (_, i) => prev[i] || crearVisitante())
+      ))
+      // Si aumentó la cantidad, abrir el primer visitante nuevo
+      if (val > oldLen) setVisitanteAbierto(oldLen)
     }
   }
 
-  const handleVisitanteChange = (index, campo, valor) => {
-    const nuevas = [...visitantes]
-    nuevas[index] = {
-      ...nuevas[index],
-      [campo]: valor
-    }
-    setVisitantes(nuevas)
-  }
+  const handleVisitanteChange = useCallback((index, campo, valor) => {
+    setVisitantes((prev) => {
+      const next = [...prev]
+      next[index] = { ...next[index], [campo]: valor }
+      return next
+    })
+    setErroresValidacion((prev) => {
+      const key = `${campo}_${index}`
+      return prev[key] ? { ...prev, [key]: null } : prev
+    })
+  }, [])
+
+  const toggleVisitante = useCallback((index) => {
+    setVisitanteAbierto((prev) => (prev === index ? -1 : index))
+  }, [])
 
   const totalEstimado = visitantes.reduce((acumulado, visitante) => {
     const precio = calcularPrecioConDescuento(visitante.edad, visitante.pase)
     return acumulado + (Number.isFinite(precio) ? precio : 0)
   }, 0)
+
+  const totalSinDescuento = visitantes.reduce((acc, v) => {
+    const e = Number(v.edad)
+    if (v.edad === '' || !Number.isFinite(e)) return acc
+    return acc + (PRECIOS_BASE[v.pase] ?? 0)
+  }, 0)
+
+  const ahorro = Math.max(totalSinDescuento - totalEstimado, 0)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -180,14 +185,11 @@ const TicketForm = ({ onExito, usuarioLogueado }) => {
         <label className="form-label" htmlFor="input-fecha">
           Fecha de visita <span>*</span>
         </label>
-        <input
-          id="input-fecha"
-          type="date"
-          className={`form-input ${erroresValidacion.fecha ? 'input-error' : ''}`}
-          min={hoyISO()}
+        <DatePicker
           value={fecha}
-          onChange={(e) => {
-            setFecha(e.target.value)
+          error={!!erroresValidacion.fecha}
+          onChange={(iso) => {
+            setFecha(iso)
             if (erroresValidacion.fecha) setErroresValidacion({ ...erroresValidacion, fecha: null })
           }}
         />
@@ -208,10 +210,7 @@ const TicketForm = ({ onExito, usuarioLogueado }) => {
           min={1}
           max={10}
           value={cantidad}
-          onChange={(e) => {
-            handleCantidadChange(e)
-            if (erroresValidacion.cantidad) setErroresValidacion({ ...erroresValidacion, cantidad: null })
-          }}
+          onChange={handleCantidadChange}
         />
         {erroresValidacion.cantidad && <p className="error-text">{erroresValidacion.cantidad}</p>}
       </div>
@@ -220,74 +219,30 @@ const TicketForm = ({ onExito, usuarioLogueado }) => {
       {Number(cantidad) > 0 && Number(cantidad) <= 10 && (
         <div className="form-group">
           <label className="form-label">Datos de cada visitante <span>*</span></label>
-          <div className="visitantes-grid">
-            {visitantes.map((visitante, i) => {
-              const precioCalculado = calcularPrecioConDescuento(visitante.edad, visitante.pase)
 
-              return (
-                <article className="visitante-card" key={i}>
-                  <div className="visitante-card__main">
-                    <div className="visitante-card__header">
-                      <h3 className="visitante-card__title">Visitante {i + 1}</h3>
-                      <span className="visitante-card__badge">#{i + 1}</span>
-                    </div>
-
-                    <div className="visitante-card__fields">
-                      <div className="visitante-card__field">
-                        <label htmlFor={`input-edad-${i}`}>Edad</label>
-                        <input
-                          id={`input-edad-${i}`}
-                          type="number"
-                          className={`form-input ${erroresValidacion[`edad_${i}`] ? 'input-error' : ''}`}
-                          placeholder="Edad"
-                          min={0}
-                          max={120}
-                          value={visitante.edad}
-                          onChange={(e) => {
-                            handleVisitanteChange(i, 'edad', e.target.value)
-                            if (erroresValidacion[`edad_${i}`]) {
-                              setErroresValidacion({ ...erroresValidacion, [`edad_${i}`]: null })
-                            }
-                          }}
-                        />
-                        {erroresValidacion[`edad_${i}`] && <p className="error-text-small">{erroresValidacion[`edad_${i}`]}</p>}
-                      </div>
-
-                      <div className="visitante-card__field">
-                        <label htmlFor={`select-pase-${i}`}>Tipo de pase</label>
-                        <select
-                          id={`select-pase-${i}`}
-                          className={`form-select ${erroresValidacion[`pase_${i}`] ? 'input-error' : ''}`}
-                          value={visitante.pase}
-                          onChange={(e) => {
-                            handleVisitanteChange(i, 'pase', e.target.value)
-                            if (erroresValidacion[`pase_${i}`]) {
-                              setErroresValidacion({ ...erroresValidacion, [`pase_${i}`]: null })
-                            }
-                          }}
-                        >
-                          <option value="regular">Regular</option>
-                          <option value="vip">VIP</option>
-                        </select>
-                        {erroresValidacion[`pase_${i}`] && <p className="error-text-small">{erroresValidacion[`pase_${i}`]}</p>}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="visitante-card__price">
-                    <span className="visitante-card__price-label">Precio unitario</span>
-                    <strong className="visitante-card__price-value">
-                      {precioCalculado === null ? '—' : formatearPrecio(precioCalculado)}
-                    </strong>
-                  </div>
-                </article>
-              )
-            })}
+          <div className="acordeon">
+            {visitantes.map((visitante, i) => (
+              <VisitanteItem
+                key={i}
+                index={i}
+                visitante={visitante}
+                abierto={visitanteAbierto === i}
+                errorEdad={erroresValidacion[`edad_${i}`]}
+                errorPase={erroresValidacion[`pase_${i}`]}
+                onChange={handleVisitanteChange}
+                onToggle={toggleVisitante}
+              />
+            ))}
           </div>
 
           <div className="purchase-summary">
             <span className="purchase-summary__label">Precio total</span>
-            <strong className="purchase-summary__value">{formatearPrecio(totalEstimado)}</strong>
+            <div className="purchase-summary__right">
+              {ahorro > 0 && (
+                <span className="purchase-summary__ahorro">🏷️ Ahorrás {formatearPrecio(ahorro)}</span>
+              )}
+              <strong className="purchase-summary__value">{formatearPrecio(totalEstimado)}</strong>
+            </div>
           </div>
         </div>
       )}
