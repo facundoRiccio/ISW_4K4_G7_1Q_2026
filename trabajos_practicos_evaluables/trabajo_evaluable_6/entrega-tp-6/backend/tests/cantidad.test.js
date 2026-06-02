@@ -6,6 +6,10 @@ describe('validarCompraEntradas', () => {
     expect(() => validarCompraEntradas(NaN)).toThrow('El parámetro debe ser un número');
   })
 
+  it('debería lanzar un error si el número de entradas no es un entero', () => {
+    expect(() => validarCompraEntradas(2.5)).toThrow('El número de entradas debe ser un número entero');
+  })
+
   it('debería lanzar un error si el número de entradas es mayor a 10', () => {
     expect(() => validarCompraEntradas(21)).toThrow('El número de entradas no puede ser mayor a 10');
   })
