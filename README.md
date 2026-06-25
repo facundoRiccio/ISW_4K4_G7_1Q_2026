@@ -61,13 +61,13 @@ ISW_4K4_G7_1Q_2026
 | **Consigna de TPIG**         | `consigna-tpig-<<numero>>.pdf`                | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
 | **Presentación TPIG**        | `presentacion-tpig-<<numero>>.<<pdf>>`        | [`trabajos_investigacion/trabajo_investigacion_<<numero>>`](trabajos_investigacion)                                                 |
 | **Consigna de TP Evaluable** | `consigna-tp-<<numero>>.pdf`                  | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
-| **Entrega de TP Evaluable**  | `entrega-tp-<<numero>>.<<pdf/png/d>>`               | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
+| **Entrega de TP Evaluable**  | `entrega-tp-<<numero>>.<<pdf/png/jpg/d>>`               | [`trabajos_practicos_evaluables/trabajo_evaluable_<<numero>>`](trabajos_practicos_evaluables)                       |
 | **Cronograma**               | `cronograma-isw.xlsx`                         | [`planificacion_catedra`](planificacion_catedra)                                                  |
 | **Programa**                 | `programa-isw.pdf`                            | [`planificacion_catedra`](planificacion_catedra) 
 
 #### Reglas de nombrado
 
-Los nombres de las carpetas van a estar en formato snake case: "snake_case"
+Los nombres de las carpetas van a estar en formato snake case: "snake_case" excepto las que sean entregas de TP Evaluables las cuales tendrán formato kebab case: "kebab-case"
 
 Los nombres de los archivos van a estar en formato kebab case: "kebab-case"
 
